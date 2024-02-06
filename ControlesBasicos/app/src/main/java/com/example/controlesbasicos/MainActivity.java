@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
+                    //hola
                     spn = findViewById(R.id.spnOpciones);
 
                     tempVal = findViewById(R.id.txtnum1);
