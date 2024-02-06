@@ -6,6 +6,8 @@ android {
     namespace = "com.example.calculadora"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.example.calculadora"
         minSdk = 22
