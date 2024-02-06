@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tempVal;
     RadioGroup opt;
     Button btn;
+
+    //a
     Spinner spn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
