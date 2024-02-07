@@ -1,14 +1,21 @@
 <resources>
     <string name="app_name">ControlesBasicos</string>
-    <string-array name="spnopciones">
-        <item>Suma</item>
-        <item>Resta</item>
-        <item>Multiplicacion</item>
-        <item>Division</item>
-        <item>Potencia</item>
-        <item>Raiz</item>
-        <item>Porcentaje</item>
-        <item>Factorial</item>
+    <string-array name="spnLongitud">
+        <item>Metros</item>
+        <item>Centimetros</item>
+        <item>Pulgadas</item>
+        <item>Pies</item>
+        <item>Varas</item>
+        <item>Yardas</item>
+        <item>Kilometros</item>
+        <item>Millas</item>
+
+    </string-array>
+    <string-array name="spnAlmacenamiento">
+        <item>MB</item>
+        <item>GB</item>
+        <item>TB</item>
+        <item>KB</item>
 
     </string-array>
 </resources>
