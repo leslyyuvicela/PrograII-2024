@@ -48,7 +48,7 @@
         android:entries="@array/spnopciones"
         android:layout_below="@+id/txtnum2"
         android:layout_marginTop="60dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="200dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -56,7 +56,7 @@
         android:id="@+id/btnCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spnOpciones"
+        android:layout_below="@+id/optCalculadora"
         android:layout_marginTop="40dp"
         android:text="Calcular"/>
 
@@ -69,7 +69,35 @@
         android:layout_marginLeft="40dp"
         android:text="Respuesta: ?" />
 
-
+    <RadioGroup
+        android:id="@+id/optCalculadora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtnum2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp">
+        <RadioButton
+            android:id="@+id/optSuma"
+            android:text="SUMA"
+            android:checked="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optResta"
+            android:text="RESTA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optMultiplicacion"
+            android:text="MULTIPLICACION"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optDivision"
+            android:text="DIVISION"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
 
 
 </RelativeLayout>
