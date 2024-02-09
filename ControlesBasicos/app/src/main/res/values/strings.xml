@@ -9,13 +9,30 @@
         <item>Yardas</item>
         <item>Kilometros</item>
         <item>Millas</item>
+        <item>Milimetros</item>
+        <item>Micrometros</item>
+        <item>Nanometros</item>
+
 
     </string-array>
     <string-array name="spnAlmacenamiento">
+        <item>Bit</item>
+        <item>Byte</item>
+        <item>KB</item>
         <item>MB</item>
         <item>GB</item>
         <item>TB</item>
-        <item>KB</item>
+        <item>PB</item>
+        <item>EB</item>
+        <item>ZB</item>
+        <item>KiB</item>
+        <item>MiB</item>
+        <item>GiB</item>
+        <item>TiB</item>
+        <item>PiB</item>
+        <item>EiB</item>
+        <item>ZiB</item>
+
 
     </string-array>
 </resources>
