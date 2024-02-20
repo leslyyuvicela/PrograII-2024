@@ -69,6 +69,25 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        btn = findViewById(R.id.btnMonedasConvertir);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spn = findViewById(R.id.spnMonedasDe);
+                int  de = spn.getSelectedItemPosition();
+
+                spn = findViewById(R.id.spnMonedasA);
+                int a = spn.getSelectedItemPosition();
+
+                tempVal = findViewById(R.id.txtMonedasCantidad);
+                double cantidad = Double.parseDouble(tempVal.getText().toString());
+
+                double resp =1/ objConversor.convertir(2, de, a, cantidad);
+                Toast.makeText(getApplicationContext(),"Respuesta:" +
+                        resp, Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
 class conversores{
@@ -78,7 +97,10 @@ class conversores{
 
             //ALMACENAMIENTO
             {1, 8,1000*8, Math.pow(1000,2)*8, Math.pow(1000,3)*8, Math.pow(1000,4)*8, Math.pow(1000,5)*8, Math.pow(1000,6)*8, Math.pow(1000,7)*8,
-                    1024*8, Math.pow(1024,2)*8, Math.pow(1024,3)*8, Math.pow(1024,4)*8, Math.pow(1024,5)*8, Math.pow(1024,6)*8, Math.pow(1024,7)*8 }
+                    1024*8, Math.pow(1024,2)*8, Math.pow(1024,3)*8, Math.pow(1024,4)*8, Math.pow(1024,5)*8, Math.pow(1024,6)*8, Math.pow(1024,7)*8 },
+
+            //MONEDAS
+            {1, 0.93, 7.81, 24.73, 36.78, 8.76, 1.35, 3946.75, 965.92, 830.67, 17.14, 0.79, 149.27},
 
     };
     public double convertir(int opcion, int de, int a, double cantidad){

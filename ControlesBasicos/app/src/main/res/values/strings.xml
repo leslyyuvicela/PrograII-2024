@@ -13,7 +13,6 @@
         <item>Micrometros</item>
         <item>Nanometros</item>
 
-
     </string-array>
     <string-array name="spnAlmacenamiento">
         <item>Bit</item>
@@ -33,6 +32,22 @@
         <item>EiB</item>
         <item>ZiB</item>
 
+    </string-array>
+
+    <string-array name="spnMonedas">
+    <item>Dolar</item>
+    <item>Euro</item>
+    <item>Quetzal</item>
+    <item>Lempira</item>
+    <item>Cordoba</item>
+    <item>Colon salvadoreño</item>
+    <item>Dolar canadiense</item>
+    <item>Peso colombiano</item>
+    <item>Peso chileno</item>
+    <item>Peso argentino</item>
+    <item>Peso mexicano</item>
+    <item>Libra esterlina</item>
+    <item>Yen</item>
 
     </string-array>
 </resources>
