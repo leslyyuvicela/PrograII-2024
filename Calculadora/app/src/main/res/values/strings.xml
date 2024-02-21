@@ -1,96 +1,20 @@
 <resources>
-    <string name="app_name">Conversores</string>
-    <string-array name="spnLongitud">
-        <item>Metros</item>
-        <item>Centimetros</item>
-        <item>Pulgadas</item>
-        <item>Pies</item>
-        <item>Varas</item>
-        <item>Yardas</item>
-        <item>Kilometros</item>
-        <item>Millas</item>
-        <item>Milimetros</item>
-        <item>Micrometros</item>
-        <item>Nanometros</item>
+    <string name="app_name">Parcial_I</string>
+    <string-array name="spnCalculo">
+        <item>1-18 Metros consumidos</item>
+        <item>19-28 Metros consumidos</item>
+        <item>29 en adelante Metros consumidos</item>
 
 
     </string-array>
-    <string-array name="spnAlmacenamiento">
-        <item>Bit</item>
-        <item>Byte</item>
-        <item>KB</item>
-        <item>MB</item>
-        <item>GB</item>
-        <item>TB</item>
-        <item>PB</item>
-        <item>EB</item>
-        <item>ZB</item>
-        <item>KiB</item>
-        <item>MiB</item>
-        <item>GiB</item>
-        <item>TiB</item>
-        <item>PiB</item>
-        <item>EiB</item>
-        <item>ZiB</item>
-    </string-array>
-    <string-array name="spnMonedas">
-        <item>Dolar estadounidense</item>
-        <item>Euro</item>
-        <item>Quetzal</item>
-        <item>Peso mexicano</item>
-        <item>Yen</item>
-        <item>Libra esterlina</item>
-        <item>Lempira</item>
-        <item>Cordoba</item>
-        <item>Dolar canadiense</item>
-        <item>Colon salvadoreño</item>
-    </string-array>
-    <string-array name="spnMasa">
-        <item>Kilogramos</item>
-        <item>Gramos</item>
-        <item>Miligramos</item>
-        <item>Microgramos</item>
-        <item>Quilates</item>
-        <item>Stones</item>
-        <item>Libras</item>
-        <item>Toneladas</item>
-        <item>Onzas</item>
-        <item>Quintales</item>
-    </string-array>
-    <string-array name="spnTiempo">
-        <item>Horas</item>
-        <item>Minutos</item>
-        <item>Segundos</item>
-        <item>Milisegundos</item>
-        <item>Microsegundos</item>
-        <item>Dias</item>
-        <item>Semanas</item>
-        <item>Meses</item>
-        <item>Años</item>
-        <item>Décadas</item>
-    </string-array>
-    <string-array name="spnTransferencia">
-        <item>Bit por segundo</item>
-        <item>Byte por segundo</item>
-        <item>Kilobit por segundo</item>
-        <item>Kilobyte por segundo</item>
-        <item>Megabit por segundo</item>
-        <item>Megabyte por segundo</item>
-        <item>Gigabit por segundo</item>
-        <item>Gigabyte por segundo</item>
-        <item>Terabit por segundo</item>
-        <item>Terabyte por segundo</item>
-    </string-array>
-    <string-array name="spnVolumen">
-        <item>Galón</item>
-        <item>Cuarto</item>
-        <item>Pinta</item>
-        <item>Onza Líquida</item>
-        <item>Cucharada</item>
-        <item>Cucharadita</item>
-        <item>Mililitro</item>
-        <item>Litro</item>
-        <item>Taza</item>
-        <item>Metro cúbico</item>
+    <string-array name="spnAreaSuperficie">
+        <item>Metro Cuadrado</item>
+        <item>Pie Cuadrado</item>
+        <item>Vara Cuadrada</item>
+        <item>Yarda Cuadrada</item>
+        <item>Tareas</item>
+        <item>Manzana</item>
+        <item>Hectarea</item>
+
     </string-array>
 </resources>
