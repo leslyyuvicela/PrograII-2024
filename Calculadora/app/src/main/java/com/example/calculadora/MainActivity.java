@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     TabHost tbh;
     Button btn;
-
+EditText TempVal;
     conversores objConversor = new conversores();
+    tarifa objTarifa = new tarifa();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {try{
-                double resp = objConversor.convertir(0,findViewById(R.id.spnCalculoDe),findViewById(R.id.spnCalculoA),
-                        findViewById(R.id.txtCalculoCantidad));
-                Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
+     TempVal =findViewById(R.id.txtCalculoCantidad);
+     double cantidadIngresada = Double.parseDouble(TempVal.getText().toString());
+     double pago = objTarifa.CalcularTarifa(cantidadIngresada);
+                Toast.makeText(getApplicationContext(), "El valor a pagar es: $ " + pago, Toast.LENGTH_LONG).show();
             }catch (Exception e){} }
         });
         btn=findViewById(R.id.btnAreaConvertir);///a
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    double resp = objConversor.convertir(1,findViewById(R.id.spnAreaA),findViewById(R.id.spnAreaDe),
+                    double resp = objConversor.convertir(0,findViewById(R.id.spnAreaDe),findViewById(R.id.spnAreaA),
                             findViewById(R.id.txtAreaCantidad));
                     Toast.makeText(getApplicationContext(), "Respuesta: " + resp, Toast.LENGTH_LONG).show();
                 }catch (Exception e){} }
@@ -67,4 +69,19 @@ class conversores{
         double cantidad= Double.parseDouble(txtCantidad.getText().toString());
         return valores [opcion][a]/valores[opcion][de]*cantidad;
     }
+}
+class tarifa{
+    public double CalcularTarifa(double cantidad){
+        double tarifa=6;
+        if(cantidad>=19&&cantidad<=28){
+            tarifa+=(cantidad-18)*0.45;
+        }
+        if (cantidad>28)
+        {
+            tarifa+=4.5+(cantidad-28)*0.65;
+        }
+        return tarifa;
+    }
+
+
 }

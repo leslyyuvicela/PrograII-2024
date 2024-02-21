@@ -36,49 +36,21 @@
                     android:orientation="vertical"
                     >
 
-                    <TextView
-                        android:id="@+id/lblCalculoDe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginLeft="40dp"
-                        android:text="DE:" />
-                    <TextView
-                        android:id="@+id/lblCalculoA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="40dp"
-                        android:text="A:" />
-                    <Spinner
-                        android:id="@+id/spnCalculoDe"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="35dp"
-                        android:layout_marginLeft="80dp"
-                        android:entries="@array/spnCalculo"
-                        />
-                    <Spinner
-                        android:id="@+id/spnCalculoA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="75dp"
-                        android:layout_marginLeft="80dp"
-                        android:entries="@array/spnCalculo"
-                        />
+
+
                     <EditText
                         android:id="@+id/txtCalculoCantidad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="120dp"
-                        android:hint="Cantidad a convertir"
+                        android:layout_marginTop="100dp"
+                        android:hint="Cantidad de metros consumidos"
                         android:inputType="numberDecimal"/>
                     <Button
                         android:id="@+id/btnCalculoConvertir"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="180dp"
-                        android:text="CONVERTIR"/>
+                        android:layout_marginTop="140dp"
+                        android:text="CALCULAR"/>
                 </RelativeLayout>
                 <!--Area superficie-->
                 <RelativeLayout

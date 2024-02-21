@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Parcial_I</string>
-    <string-array name="spnCalculo">
-        <item>1-18 Metros consumidos</item>
-        <item>19-28 Metros consumidos</item>
-        <item>29 en adelante Metros consumidos</item>
 
 
-    </string-array>
+
+
     <string-array name="spnAreaSuperficie">
         <item>Metro Cuadrado</item>
         <item>Pie Cuadrado</item>
