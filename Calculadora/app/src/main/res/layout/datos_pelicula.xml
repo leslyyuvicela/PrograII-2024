@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Datos_Pelicula">
+
+    <ImageButton
+        android:id="@+id/imgPelicula"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginRight="165dp"
+        android:backgroundTint="#656CE6"
+        android:src="@android:drawable/ic_menu_camera" />
+    <EditText
+        android:id="@+id/txtTitulo"
+        android:layout_below="@id/imgPelicula"
+        android:layout_marginTop="10dp"
+        android:hint="Titulo"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtSinopsis"
+        android:layout_marginTop="40dp"
+        android:hint="Sinopsis"
+        android:layout_below="@id/txtTitulo"
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtDuracion"
+        android:layout_marginTop="40dp"
+        android:hint="Duracion"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtSinopsis"
+        android:inputType="number"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtActor"
+        android:layout_marginTop="40dp"
+        android:hint="Actor"
+        android:inputType="textEmailAddress"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtDuracion"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/btnGuardarPeliculas"
+        android:text="GUARDAR Pelicula"
+        android:layout_below="@id/txtActor"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRegresarListaPeliculas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@android:drawable/ic_menu_revert"
+
+         />
+
+</RelativeLayout>
