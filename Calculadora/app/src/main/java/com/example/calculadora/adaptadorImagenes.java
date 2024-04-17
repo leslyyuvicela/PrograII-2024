@@ -55,7 +55,7 @@ public class adaptadorImagenes extends BaseAdapter {
             tempVal.setText(misPeliculas.getDuracion());
 
             tempVal = itemView.findViewById(R.id.lblActor);
-            tempVal.setText("Cod: "+misPeliculas.getActorPelicula());
+            tempVal.setText(misPeliculas.getActor());
 
 
 

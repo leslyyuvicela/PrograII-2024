@@ -15,10 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,7 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Lista_Peliculas extends AppCompatActivity {
     Bundle parametros = new Bundle();
@@ -182,7 +179,7 @@ public class Lista_Peliculas extends AppCompatActivity {
                             misDatosJSONObject.getString("titulo"),
                             misDatosJSONObject.getString("duracion"),
                             misDatosJSONObject.getString("sinopsis"),
-                            misDatosJSONObject.getString("presentacion"),
+                            misDatosJSONObject.getString("actor"),
                             misDatosJSONObject.getString("precio"),
                             misDatosJSONObject.getString("urlCompletaImg"),
                             misDatosJSONObject.getString("_id"),
@@ -297,11 +294,10 @@ public class Lista_Peliculas extends AppCompatActivity {
                     jsonObject.put("titulo",cPeliculas.getString(1));//titulo
                     jsonObject.put("duracion",cPeliculas.getString(2));//duracion
                     jsonObject.put("sinopsis",cPeliculas.getString(3));//sinopsis
-                    jsonObject.put("presentacion",cPeliculas.getString(4));//presentacion
-                    jsonObject.put("precio", cPeliculas.getString(5));//precio
-                    jsonObject.put("urlCompletaImg",cPeliculas.getString(6));//foto
-                    jsonObject.put("_id",cPeliculas.getString(7));//_id
-                    jsonObject.put("_rev",cPeliculas.getString(8));//_rev
+                    jsonObject.put("actor",cPeliculas.getString(4));//actor
+                    jsonObject.put("urlCompletaImg",cPeliculas.getString(5));//foto
+                    jsonObject.put("_id",cPeliculas.getString(6));//_id
+                    jsonObject.put("_rev",cPeliculas.getString(7));//_rev
 
 
                     jsonObjectValue.put("value",jsonObject);
@@ -343,21 +339,21 @@ public class Lista_Peliculas extends AppCompatActivity {
                     alPeliculas.clear();
                     String valor = tempVal.getText().toString().trim().toLowerCase();
                     if( valor.equals("")){
-                        alPeliculas.addAll(alProductosCopy);
+                        alPeliculas.addAll(alPeliculasCopy);
                     }else{
-                        for( productos Producto : alProductosCopy ){
-                            String titulo = Producto.getTitulo();
-                            String duracion = Producto.getDuracion();
-                            String sinopsis = Producto.getSinopsis();
-                            String presentacion = Producto.getPresentacion();
+                        for( Peliculas Pelicula : alPeliculasCopy ){
+                            String titulo = Pelicula.getTitulo();
+                            String duracion = Pelicula.getDuracion();
+                            String sinopsis = Pelicula.getSinopsis();
+                            String actor = Pelicula.getActor();
                             if( titulo.toLowerCase().trim().contains(valor) ||
                                     duracion.toLowerCase().trim().contains(valor) ||
                                     sinopsis.trim().contains(valor) ||
-                                    presentacion.trim().toLowerCase().contains(valor) ){
-                                alProductos.add(Producto);
+                                    actor.trim().toLowerCase().contains(valor) ){
+                                alPeliculas.add(Pelicula);
                             }
                         }
-                        adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alProductos);
+                        adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alPeliculas);
                         lts.setAdapter(adImagenes);
                     }
                 }catch (Exception e){

@@ -1,9 +1,5 @@
 package com.example.calculadora;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -17,9 +13,6 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,24 +61,22 @@ public class Datos_Pelicula extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    tempVal = findViewById(R.id.txttitulo);
+                    tempVal = findViewById(R.id.txtTitulo);
                     String titulo = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtduracion);
+                    tempVal = findViewById(R.id.txtDuracion);
                     String duracion = tempVal.getText().toString();
 
                     tempVal = findViewById(R.id.txtSinopsis);
                     String sinopsis = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtPresentacion);
-                    String presentacion = tempVal.getText().toString();
+                    tempVal = findViewById(R.id.txtActor);
+                    String actor = tempVal.getText().toString();
 
-                    tempVal = findViewById(R.id.txtPrecio);
-                    String precio = tempVal.getText().toString();
 
-                    if (!(titulo.equals("") || sinopsis.equals("") || duracion.equals("") || presentacion.equals("") || precio.equals(""))) {
+                    if (!(titulo.equals("") || sinopsis.equals("") || duracion.equals("") || actor.equals(""))) {
                         //Guardar en el server
-                        String[] datos = new String[]{idPelicula, titulo, duracion, sinopsis, presentacion, precio, urlCompletaImg,id,rev};
+                        String[] datos = new String[]{idPelicula, titulo, duracion, sinopsis, actor, urlCompletaImg,id,rev};
 
                         try {
                             di = new detectarInternet(getApplicationContext());
@@ -113,18 +104,17 @@ public class Datos_Pelicula extends AppCompatActivity {
     private void guardarDatosServidor(String[] datos){
         try {
             JSONObject datosPeliculas = new JSONObject();
-            if (accion.equals("modificar") && datos[7].length() > 0 && datos[8].length() > 0) {
-                datosPeliculas.put("_id", datos[7]);
-                datosPeliculas.put("_rev", datos[8]);
+            if (accion.equals("modificar") && datos[6].length() > 0 && datos[8].length() > 0) {
+                datosPeliculas.put("_id", datos[6]);
+                datosPeliculas.put("_rev", datos[7]);
 
             }
             datosPeliculas.put("idPelicula", datos[0]);
             datosPeliculas.put("titulo", datos[1]);
             datosPeliculas.put("duracion", datos[2]);
             datosPeliculas.put("sinopsis", datos[3]);
-            datosPeliculas.put("presentacion", datos[4]);
-            datosPeliculas.put("precio", datos[5]);
-            datosPeliculas.put("urlCompletaImg", datos[6]);
+            datosPeliculas.put("actor", datos[4]);
+            datosPeliculas.put("urlCompletaImg", datos[5]);
 
             String respuesta = "";
             enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
@@ -239,20 +229,17 @@ public class Datos_Pelicula extends AppCompatActivity {
                 rev =jsonObject.getString("_rev");
                 idPelicula=jsonObject.getString("idPelicula");
 
-                tempVal = findViewById(R.id.txttitulo);
+                tempVal = findViewById(R.id.txtTitulo);
                 tempVal.setText(jsonObject.getString("titulo"));
 
-                tempVal = findViewById(R.id.txtduracion);
+                tempVal = findViewById(R.id.txtDuracion);
                 tempVal.setText(jsonObject.getString("duracion"));
 
                 tempVal = findViewById(R.id.txtSinopsis);
                 tempVal.setText(jsonObject.getString("sinopsis"));
 
-                tempVal = findViewById(R.id.txtPresentacion);
-                tempVal.setText(jsonObject.getString("presentacion"));
-
-                tempVal = findViewById(R.id.txtPrecio);
-                tempVal.setText(jsonObject.getString("precio"));
+                tempVal = findViewById(R.id.txtActor);
+                tempVal.setText(jsonObject.getString("actor"));
 
                 urlCompletaImg = jsonObject.getString("urlCompletaImg");
                 Bitmap bitmap = BitmapFactory.decodeFile(urlCompletaImg);

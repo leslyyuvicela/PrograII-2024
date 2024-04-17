@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 public class DB extends SQLiteOpenHelper {
     private static final String dbname = "db_Peliculas";
     private static final int v=1;
-    private static final String SQldb = "CREATE TABLE Peliculas( idPelicula txt,titulo text, duracion text, sinopsis text, presentacion text, precio text,foto text,id text,rev text)";
+    private static final String SQldb = "CREATE TABLE Peliculas( idPelicula txt,titulo text, duracion text, sinopsis text, actor text, foto text,id text,rev text)";
     public DB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, dbname, factory, v);
     }
@@ -45,10 +45,10 @@ public class DB extends SQLiteOpenHelper {
                 valoresPelicula.put("titulo", datos[1]);
                 valoresPelicula.put("duracion", datos[2]);
                 valoresPelicula.put("sinopsis", datos[3]);
-
-                valoresPelicula.put("foto", datos[4]);
-                valoresPelicula.put("id",datos[5]);
-                valoresPelicula.put("rev",datos[6]);
+                valoresPelicula.put("actor", datos[4]);
+                valoresPelicula.put("foto", datos[5]);
+                valoresPelicula.put("id",datos[6]);
+                valoresPelicula.put("rev",datos[7]);
             }
             SQLiteDatabase db = getWritableDatabase();
             switch (accion){

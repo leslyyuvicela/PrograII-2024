@@ -7,18 +7,18 @@ public class Peliculas {
     String titulo;
     String duracion;
     String sinopsis;
-    String presentacion;
+    String actor;
     String precio;
     String foto;
 
-    public Peliculas(String idPelicula, String titulo, String duracion, String sinopsis, String presentacion, String precio, String foto, String _id, String _rev) {
+    public Peliculas(String idPelicula, String titulo, String duracion, String sinopsis, String actor, String precio, String foto, String _id, String _rev) {
         this._id=_id;
         this._rev= _rev;
         this.codigoPelicula = idPelicula;
         this.titulo = titulo;
         this.duracion = duracion;
         this.sinopsis = sinopsis;
-        this.presentacion = presentacion;
+        this.actor = actor;
         this.precio = precio;
         this.foto = foto;
     }
@@ -44,7 +44,7 @@ public class Peliculas {
         this.foto = foto;
     }
 
-    public String getActorPelicula() {
+    public String getIdPelicula() {
         return codigoPelicula;
     }
 
@@ -76,12 +76,12 @@ public class Peliculas {
         this.sinopsis = telefono;
     }
 
-    public String getPresentacion() {
-        return presentacion;
+    public String getActor() {
+        return actor;
     }
 
-    public void setPresentacion(String email) {
-        this.presentacion = email;
+    public void setActor(String email) {
+        this.actor = email;
     }
 
     public String getPrecio() {
