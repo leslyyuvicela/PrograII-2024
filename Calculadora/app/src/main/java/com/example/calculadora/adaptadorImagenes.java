@@ -75,7 +75,7 @@ public class adaptadorImagenes extends BaseAdapter {
             tempVal.setText("Stock: "+misProductos.getStock());
 
             tempVal = itemView.findViewById(R.id.lblPrecio);
-            tempVal.setText("Precio: $"+ precio);
+            tempVal.setText("Precio: $"+ String.format("%.2f",precio));
 
             ImageView imgView = itemView.findViewById(R.id.imgFoto);
             Bitmap bitmap = BitmapFactory.decodeFile(misProductos.getFoto());

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 public class DB extends SQLiteOpenHelper {
     private static final String dbname = "db_Productos";
     private static final int v=1;
-    private static final String SQldb = "CREATE TABLE Productos( idProducto txt,nombre text, descripcion text, marca text, presentacion text, costo text,ganancia text, stock text,foto text,id text,rev text)";
+    private static final String SQldb = "CREATE TABLE Productos( idProducto txt,nombre text, descripcion text, marca text, presentacion text, costo text,ganancia text, stock text,foto text,id text,rev text, actualizado text)";
     public DB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, dbname, factory, v);
     }
@@ -51,6 +51,7 @@ public class DB extends SQLiteOpenHelper {
                 valoresProducto.put("foto", datos[8]);
                 valoresProducto.put("id",datos[9]);
                 valoresProducto.put("rev",datos[10]);
+                valoresProducto.put("actualizado",datos[11]);
             }
             SQLiteDatabase db = getWritableDatabase();
             switch (accion){

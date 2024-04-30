@@ -12,8 +12,9 @@ public class productos {
     String ganancia;
     String stock;
     String foto;
+    String actualizado;
 
-    public productos(String idProducto, String nombre, String descripcion, String marca, String presentacion, String costo, String ganancia, String stock, String foto, String _id, String _rev) {
+    public productos(String idProducto, String nombre, String descripcion, String marca, String presentacion, String costo, String ganancia, String stock, String foto, String _id, String _rev, String actualizado) {
         this._id=_id;
         this._rev= _rev;
         this.codigoProducto = idProducto;
@@ -25,6 +26,7 @@ public class productos {
         this.ganancia = ganancia;
         this.stock = stock;
         this.foto = foto;
+        this.actualizado = actualizado;
     }
     public String get_id() {
         return _id;
@@ -110,5 +112,12 @@ public class productos {
 
     public void setStock(String stock) {
         this.stock = stock;
+    }
+    public String getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(String actualizado) {
+        this.actualizado = actualizado;
     }
 }

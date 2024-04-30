@@ -111,9 +111,9 @@ public class Lista_Productos extends AppCompatActivity {
     }
     private void guardarDatosServidor(JSONObject datosProductos){
         try {
+            datosProductos.put("actualizado","si");
             String respuesta = "";
-            datosProductos.remove("_id");
-            datosProductos.remove("_rev");
+
             enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
             respuesta = objGuardarDatosServidor.execute(datosProductos.toString()).get();
             JSONObject respuestaJSONObject = new JSONObject(respuesta);
@@ -134,12 +134,15 @@ public class Lista_Productos extends AppCompatActivity {
             if (datosJSON.length()>0){
                 for (int i=0; i<datosJSON.length(); i++) {
                     misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
-
+              if (misDatosJSONObject.getString("actualizado").equals("no")) {
                     if(misDatosJSONObject.getString("_id").equals("")&& misDatosJSONObject.getString("_rev").equals("")){
-                        guardarDatosServidor(misDatosJSONObject);
-                        // mostrarMsg(misDatosJSONObject.toString());
+
+                        misDatosJSONObject.remove("_id");
+                        misDatosJSONObject.remove("_rev");
                     }
+                  guardarDatosServidor(misDatosJSONObject);
                 }
+            }
             }
 
         }catch (Exception e){mostrarMsg("Error al sincronizar: "+e.getMessage());}
@@ -163,7 +166,8 @@ public class Lista_Productos extends AppCompatActivity {
                             misDatosJSONObject.getString("stock"),
                             misDatosJSONObject.getString("urlCompletaImg"),
                             misDatosJSONObject.getString("_id"),
-                            misDatosJSONObject.getString("_rev")
+                            misDatosJSONObject.getString("_rev"),
+                            misDatosJSONObject.getString("actualizado")
                     };
                     dbProductos.administrar_Productos("nuevo",datos);
 
@@ -193,7 +197,8 @@ public class Lista_Productos extends AppCompatActivity {
                             misDatosJSONObject.getString("stock"),
                             misDatosJSONObject.getString("urlCompletaImg"),
                             misDatosJSONObject.getString("_id"),
-                            misDatosJSONObject.getString("_rev")
+                            misDatosJSONObject.getString("_rev"),
+                            misDatosJSONObject.getString("actualizado")
                     );
                     alProductos.add(misProductos);
                     alProductosCopy.add(misProductos);
@@ -311,6 +316,7 @@ public class Lista_Productos extends AppCompatActivity {
                     jsonObject.put("urlCompletaImg",cProductos.getString(8));//foto
                     jsonObject.put("_id",cProductos.getString(9));//_id
                     jsonObject.put("_rev",cProductos.getString(10));//_rev
+                    jsonObject.put("actualizado",cProductos.getString(11));//_rev
 
 
                     jsonObjectValue.put("value",jsonObject);

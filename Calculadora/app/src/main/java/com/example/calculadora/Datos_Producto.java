@@ -36,7 +36,7 @@ public class Datos_Producto extends AppCompatActivity {
     TextView tempVal;
     Button btn;
     FloatingActionButton btnRegresar;
-    String accion="nuevo", id="", urlCompletaImg="",rev="",idProducto="";
+    String accion="nuevo", id="", urlCompletaImg="",rev="",idProducto="", actualizado="";
     Intent tomarFotoIntent,cargarFotoIntent;
     ImageView img;
     utilidades utls;
@@ -91,7 +91,7 @@ public class Datos_Producto extends AppCompatActivity {
 
                     if (!(nombre.equals("") || marca.equals("") || descripcion.equals("") || presentacion.equals("") || costo.equals(""))) {
                         //Guardar en el server
-                        String[] datos = new String[]{idProducto, nombre, descripcion, marca, presentacion, costo, ganancia,stock, urlCompletaImg,id,rev};
+                        String[] datos = new String[]{idProducto, nombre, descripcion, marca, presentacion, costo, ganancia,stock, urlCompletaImg,id,rev, actualizado};
 
                         try {
                             di = new detectarInternet(getApplicationContext());
@@ -133,6 +133,7 @@ public class Datos_Producto extends AppCompatActivity {
             datosProductos.put("ganancia", datos[6]);
             datosProductos.put("stock", datos[7]);
             datosProductos.put("urlCompletaImg", datos[8]);
+            datosProductos.put("actualizado", "si");
 
             String respuesta = "";
             enviarDatosServidor objGuardarDatosServidor = new enviarDatosServidor(getApplicationContext());
@@ -152,6 +153,7 @@ public class Datos_Producto extends AppCompatActivity {
     }
     private void guardarDatosSQLite(String[] datos){
         try {
+            datos[11]="no";
             DB db = new DB(getApplicationContext(), "", null, 1);
             String respuesta = "";
 
@@ -184,7 +186,7 @@ public class Datos_Producto extends AppCompatActivity {
 
                 fotoProducto = crearImagenProducto();
                 if( fotoProducto!=null ){
-                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.ugb.calculadora.fileprovider", fotoProducto);
+                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
                     cargarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoProducto);
                     startActivityForResult(cargarFotoIntent, 1);
                 }else{
@@ -205,7 +207,7 @@ public class Datos_Producto extends AppCompatActivity {
 
                 fotoProducto = crearImagenProducto();
                 if( fotoProducto!=null ){
-                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.ugb.calculadora.fileprovider", fotoProducto);
+                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
                     tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoProducto);
                     startActivityForResult(tomarFotoIntent, 1);
                 }else{
@@ -267,11 +269,10 @@ public class Datos_Producto extends AppCompatActivity {
 
                 tempVal = findViewById(R.id.txtStock);
                 tempVal.setText(jsonObject.getString("stock"));
-                mostrarMsg("p1");
+
                 urlCompletaImg = jsonObject.getString("urlCompletaImg");
 
                 Bitmap bitmap = BitmapFactory.decodeFile(urlCompletaImg);
-                mostrarMsg("p2");
                 img.setImageBitmap(bitmap);
             }else
                 idProducto=utls.generarIdUnico();
