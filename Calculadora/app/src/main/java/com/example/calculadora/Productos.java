@@ -1,44 +1,43 @@
 package com.example.calculadora;
 
-public class productos {
+public class Productos {
     String _id;
-    String _rev;
     String codigoProducto;
     String nombre;
     String descripcion;
     String marca;
-    String presentacion;
-    String costo;
-    String ganancia;
-    String stock;
+    Double costo;
+    Double ganancia;
+    Double descuento;
+    String categoria;
+    Double stock;
     String foto;
-    String actualizado;
+    Boolean actualizado;
 
-    public productos(String idProducto, String nombre, String descripcion, String marca, String presentacion, String costo, String ganancia, String stock, String foto, String _id, String _rev, String actualizado) {
+
+
+
+    public Productos(String _id, String codigoProducto, String categoria, String nombre, String descripcion, String marca, Double costo, Double ganancia, Double descuento, Double stock, String foto, Boolean actualizado) {
         this._id=_id;
-        this._rev= _rev;
-        this.codigoProducto = idProducto;
+        this.codigoProducto = codigoProducto;
+        this.categoria=categoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
-        this.presentacion = presentacion;
         this.costo = costo;
         this.ganancia = ganancia;
+        this.descuento=descuento;
         this.stock = stock;
         this.foto = foto;
         this.actualizado = actualizado;
     }
+
+
     public String get_id() {
         return _id;
     }
     public void set_id(String _id) {
         this._id = _id;
-    }
-    public String get_rev() {
-        return _rev;
-    }
-    public void set_rev(String _rev) {
-        this._rev = _rev;
     }
 
 
@@ -82,42 +81,55 @@ public class productos {
         this.marca = telefono;
     }
 
-    public String getPresentacion() {
-        return presentacion;
-    }
 
-    public void setPresentacion(String email) {
-        this.presentacion = email;
-    }
-
-    public String getCosto() {
+    public Double getCosto() {
         return costo;
     }
 
-    public void setCosto(String dui) {
-        this.costo = dui;
+    public void setCosto(Double costo) {
+        this.costo = costo;
     }
 
-    public String getGanancia() {
+    public Double getGanancia() {
         return ganancia;
     }
 
-    public void setGanancia(String ganancia) {
+    public void setGanancia(Double ganancia) {
         this.ganancia = ganancia;
     }
 
-    public String getStock() {
+    public Double getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(Double stock) {
         this.stock = stock;
     }
-    public String getActualizado() {
+    public Boolean getActualizado() {
         return actualizado;
     }
 
-    public void setActualizado(String actualizado) {
+    public void setActualizado(Boolean actualizado) {
         this.actualizado = actualizado;
+    }
+
+    public Double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Double descuento) {
+        this.descuento = descuento;
+    }
+
+    public void setCodigoProducto(String codigoProducto) {
+        this.codigoProducto = codigoProducto;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

@@ -15,10 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,9 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class Lista_Productos extends AppCompatActivity {
+public class Lista_Productos extends AppCompatActivity {/*
     Bundle parametros = new Bundle();
     FloatingActionButton btn;
     ListView lts;
@@ -38,9 +35,9 @@ public class Lista_Productos extends AppCompatActivity {
 
     EditText txt;
 
-    productos misProductos;
-    final ArrayList<productos> alProductos=new ArrayList<productos>();
-    final ArrayList<productos> alProductosCopy=new ArrayList<productos>();
+    Productos misProductos;
+    final ArrayList<Productos> alProductos=new ArrayList<Productos>();
+    final ArrayList<Productos> alProductosCopy=new ArrayList<Productos>();
 
     JSONArray datosJSON;
     JSONObject jsonObject;
@@ -186,7 +183,7 @@ public class Lista_Productos extends AppCompatActivity {
                 JSONObject misDatosJSONObject;
                 for (int i=0; i<datosJSON.length(); i++){
                     misDatosJSONObject = datosJSON.getJSONObject(i).getJSONObject("value");
-                    misProductos = new productos(
+                    misProductos = new Productos(
                             misDatosJSONObject.getString("idProducto"),
                             misDatosJSONObject.getString("nombre"),
                             misDatosJSONObject.getString("descripcion"),
@@ -324,14 +321,7 @@ public class Lista_Productos extends AppCompatActivity {
 
                 }while(cProductos.moveToNext());
                 //mostrarDatosProductos();
-               /* alProductosCopy.addAll(alProductos);
 
-                adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(), alProductos);
-                lts.setAdapter(adImagenes);
-
-                registerForContextMenu(lts);
-
-                */
             }else{
                 mostrarMsg("No hay Productos que mostrar");
             }
@@ -360,15 +350,13 @@ public class Lista_Productos extends AppCompatActivity {
                     if( valor.equals("")){
                         alProductos.addAll(alProductosCopy);
                     }else{
-                        for( productos Producto : alProductosCopy ){
+                        for( Productos Producto : alProductosCopy ){
                             String nombre = Producto.getNombre();
                             String descripcion = Producto.getDescripcion();
                             String marca = Producto.getMarca();
-                            String presentacion = Producto.getPresentacion();
                             if( nombre.toLowerCase().trim().contains(valor) ||
                                     descripcion.toLowerCase().trim().contains(valor) ||
-                                    marca.trim().contains(valor) ||
-                                    presentacion.trim().toLowerCase().contains(valor) ){
+                                    marca.trim().contains(valor)  ){
                                 alProductos.add(Producto);
                             }
                         }
@@ -385,5 +373,5 @@ public class Lista_Productos extends AppCompatActivity {
             }
         });
     }
-
+*/
 }

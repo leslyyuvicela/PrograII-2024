@@ -12,16 +12,27 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Document;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registrarse extends AppCompatActivity {
-EditText txtCorreo, txtContraseña, txtConfirmarContraseña;
+EditText txtCorreo, txtContraseña, txtConfirmarContraseña,txtNombres, txtApellidos, txtTelefono, txtDireccion;
 Button btnRegistrarse;
 FirebaseAuth mAuth;
+FirebaseFirestore fStore;
 ProgressBar progressBar;
+
+    String correo, contraseña, confirmarContraseña,nombres, apellidos, telefono, direccion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +43,24 @@ ProgressBar progressBar;
         txtConfirmarContraseña= findViewById(R.id.txtConfirmarContraseña);
         btnRegistrarse= findViewById(R.id.btnRegistrarse);
         progressBar =findViewById(R.id.pbRegistrarse);
+        txtNombres=findViewById(R.id.txtNombres);
+        txtApellidos=findViewById(R.id.txtApellidos);
+        txtTelefono=findViewById(R.id.txtTelefono);
+        txtDireccion=findViewById(R.id.txtDireccion);
 
 btnRegistrarse.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         progressBar.setVisibility(View.VISIBLE);
-        String correo, contraseña, confirmarContraseña;
+        fStore = FirebaseFirestore.getInstance();
+        nombres=txtNombres.getText().toString();
+        apellidos=txtApellidos.getText().toString();
+        telefono=txtTelefono.getText().toString();
+        direccion=txtDireccion.getText().toString();
         correo =  txtCorreo.getText().toString();
         contraseña= txtContraseña.getText().toString();
         confirmarContraseña= txtConfirmarContraseña.getText().toString();
+
         if(correo.isEmpty() || contraseña.isEmpty()|| confirmarContraseña.isEmpty()){
             mostrarMsg("Hay campos vacíos");
             return;
@@ -52,12 +72,21 @@ btnRegistrarse.setOnClickListener(new View.OnClickListener() {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
+                                FirebaseUser usuario = mAuth.getCurrentUser();
+                                DocumentReference doc = fStore.collection("Usuarios").document(usuario.getUid());
+                                Map<String, Object> userInfo = new HashMap<>();
+                                userInfo.put("nombres", nombres);
+                                userInfo.put("apellidos", apellidos);
+                                userInfo.put("telefono", telefono);
+                                userInfo.put("direccion", direccion);
+                                userInfo.put("rol", "cliente");
+
+                                doc.set(userInfo);
                                 mostrarMsg("Usuario registrado con éxito");
                                 abrirPrincipal();
-                                finish();
                             } else {
                                 // If sign in fails, display a message to the user.
-                               mostrarMsg("La autenticación falló");
+                               mostrarMsg("Hubo un error al registrar el usuario");
                             }
                         }
                     });
@@ -72,6 +101,7 @@ btnRegistrarse.setOnClickListener(new View.OnClickListener() {
 
         Intent abrirPrincipal = new Intent(getApplicationContext(), Principal.class);
         startActivity(abrirPrincipal);
+        finish();
     }
     private void mostrarMsg(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();

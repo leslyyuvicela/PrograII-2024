@@ -241,6 +241,7 @@ public class Datos_Producto extends AppCompatActivity {
     }
     private void mostrarDatosProductos(){
         try {
+
             Bundle parametros = getIntent().getExtras();
             accion = parametros.getString("accion");
             if( accion.equals("modificar") ){

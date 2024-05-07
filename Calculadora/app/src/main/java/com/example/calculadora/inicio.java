@@ -7,14 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class inicio extends AppCompatActivity {
 
     Button btnLogIn, btnRegistrarse, btnExplorar;
+    FirebaseAuth mAuth;
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            abrirPrincipal();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
-
+        mAuth = FirebaseAuth.getInstance();
 
         // Codigo de los botones
         btnExplorar = findViewById(R.id.btnexplorar);
@@ -36,7 +48,7 @@ public class inicio extends AppCompatActivity {
         btnExplorar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirInicio();
+                abrirPrincipal();
             }
         });
 
@@ -52,5 +64,9 @@ public class inicio extends AppCompatActivity {
         startActivity(abrirRegistrarse);
     }
 
-    private void abrirInicio(){}
+    private void abrirPrincipal(){
+        Intent abrirprincipal = new Intent(getApplicationContext(), Principal.class);
+        startActivity(abrirprincipal);
+finish();
+    }
 }
