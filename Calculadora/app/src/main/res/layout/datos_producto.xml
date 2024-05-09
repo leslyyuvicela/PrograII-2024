@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Datos_Producto">
+    tools:context=".Agregar_Producto">
 
     <ImageButton
         android:id="@+id/imgProducto"

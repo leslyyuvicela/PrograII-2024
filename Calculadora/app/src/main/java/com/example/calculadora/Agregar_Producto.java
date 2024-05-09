@@ -1,9 +1,5 @@
 package com.example.calculadora;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -17,9 +13,6 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +25,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Datos_Producto extends AppCompatActivity {
+public class Agregar_Producto extends AppCompatActivity {
     TextView tempVal;
     Button btn;
     FloatingActionButton btnRegresar;
@@ -186,7 +179,7 @@ public class Datos_Producto extends AppCompatActivity {
 
                 fotoProducto = crearImagenProducto();
                 if( fotoProducto!=null ){
-                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
+                    Uri uriFotoProducto = FileProvider.getUriForFile(Agregar_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
                     cargarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoProducto);
                     startActivityForResult(cargarFotoIntent, 1);
                 }else{
@@ -207,7 +200,7 @@ public class Datos_Producto extends AppCompatActivity {
 
                 fotoProducto = crearImagenProducto();
                 if( fotoProducto!=null ){
-                    Uri uriFotoProducto = FileProvider.getUriForFile(Datos_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
+                    Uri uriFotoProducto = FileProvider.getUriForFile(Agregar_Producto.this, "com.example.calculadora.fileprovider", fotoProducto);
                     tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoProducto);
                     startActivityForResult(tomarFotoIntent, 1);
                 }else{

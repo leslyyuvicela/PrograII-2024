@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calculadora.Adaptadores.AdaptadorProductos;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -42,7 +45,10 @@ public class Principal extends AppCompatActivity {
     detectarInternet di;
     TextView txtBuscar;
     ImageButton btnSalir;
+    Query query;
    GridView grdDescuentos;
+   RecyclerView rvDescuentos;
+   AdaptadorProductos adProductos;
     String  rol = "invitado";
 Productos productos;
     final ArrayList<Productos> alProductos=new ArrayList<Productos>();
@@ -54,8 +60,8 @@ Productos productos;
 
         txtBuscar=findViewById(R.id.txtBuscar);
         btnAgregarProducto=findViewById(R.id.btnAgregarProducto);
-        grdDescuentos=findViewById(R.id.grdDescuentos);
-
+        //grdDescuentos=findViewById(R.id.grdDescuentos);
+rvDescuentos=findViewById(R.id.rvDescuentos);
         fStore=FirebaseFirestore.getInstance();
         auth=FirebaseAuth.getInstance();
         try {
@@ -101,7 +107,8 @@ Productos productos;
         mostrarProductos();
     }
 
-    private void mostrarProductos() {try{
+    private void mostrarProductos() {
+        /*try{
         colProductos = fStore.collection("productos");
         colProductos.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -124,8 +131,9 @@ Productos productos;
     alProductos.add(productos);
 
 }
-                        adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(),alProductos);
-                        grdDescuentos.setAdapter(adImagenes);
+
+                        //adaptadorImagenes adImagenes = new adaptadorImagenes(getApplicationContext(),alProductos);
+                        //grdDescuentos.setAdapter(adImagenes);
                     }catch (Exception e){
     txtBuscar.setText(e.getMessage());
 }
@@ -142,6 +150,16 @@ Productos productos;
     }catch (Exception e){
         mostrarMsg(e.getMessage());
     }}
+
+         */
+        rvDescuentos.setLayoutManager(new LinearLayoutManager(this));
+        query= fStore.collection("productos");
+        FirestoreRecyclerOptions<Productos> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Productos>()
+                .setQuery(query,Productos.class).build();
+        adProductos = new AdaptadorProductos(firestoreRecyclerOptions,this,getSupportFragmentManager());
+        adProductos.notifyDataSetChanged();
+        rvDescuentos.setAdapter(adProductos);
+    }
 
     private void cerrarSesión(){
         FirebaseAuth.getInstance().signOut();

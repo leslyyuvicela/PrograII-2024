@@ -46,7 +46,7 @@
             android:name=".Lista_Productos"
             android:exported="false"></activity>
         <activity
-            android:name=".Datos_Producto"
+            android:name=".Agregar_Producto"
             android:exported="false" />
 
         <provider

@@ -32,6 +32,9 @@ public class Productos {
         this.actualizado = actualizado;
     }
 
+    public Productos(Productos productos) {
+    }
+
 
     public String get_id() {
         return _id;
