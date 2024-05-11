@@ -7,15 +7,50 @@
     tools:context=".inicio">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido a"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/DarkBlue"
+        />
+    <ImageView
+        android:id="@+id/titulo"
+        android:layout_width="330dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/titulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/DarkBlue"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/titulo"
+        android:scaleType="fitCenter"
+        />
+
+
     <Button
         android:id="@+id/btnRegistrarse"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
         android:layout_below="@id/btnIniciarSesion"
         android:text="Registrarse"
+        android:textColor="@color/DarkBlue"
+        android:backgroundTint="@color/LightBlue"
 
         />
 
@@ -23,19 +58,23 @@
         android:id="@+id/btnIniciarSesion"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
-        android:text="Iniciar sesiòn"
-        />
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/LightBlue"
+        android:text="Iniciar sesión"
+        android:textColor="@color/DarkBlue" />
 
     <Button
         android:id="@+id/btnexplorar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/btnRegistrarse"
         android:text="Explorar"
+        android:textColor="@color/DarkBlue"
+        android:backgroundTint="@color/LightBlue"
         />
 
 

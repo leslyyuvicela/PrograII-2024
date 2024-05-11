@@ -152,13 +152,15 @@ rvDescuentos=findViewById(R.id.rvDescuentos);
     }}
 
          */
-        rvDescuentos.setLayoutManager(new LinearLayoutManager(this));
-        query= fStore.collection("productos");
-        FirestoreRecyclerOptions<Productos> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Productos>()
-                .setQuery(query,Productos.class).build();
-        adProductos = new AdaptadorProductos(firestoreRecyclerOptions,this,getSupportFragmentManager());
-        adProductos.notifyDataSetChanged();
-        rvDescuentos.setAdapter(adProductos);
+        try {
+            rvDescuentos.setLayoutManager(new LinearLayoutManager(this));
+            query = fStore.collection("productos");
+            FirestoreRecyclerOptions<Productos> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Productos>()
+                    .setQuery(query, Productos.class).build();
+            //adProductos = new AdaptadorProductos(firestoreRecyclerOptions, this, getSupportFragmentManager());
+            //adProductos.notifyDataSetChanged();
+            //rvDescuentos.setAdapter(adProductos);
+        }catch (Exception e){}
     }
 
     private void cerrarSesión(){

@@ -2,10 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Blue">#4040FF</color>
+    <color name="Blue">#1111B2</color>
+    <color name="DarkBlue">#1C0452</color>
     <color name="Red">#FF3232</color>
     <color name="Orange">#EE6E30</color>
     <color name="Yellow">#EEBE00</color>
+    <color name="LightBlue">#348EF3</color>
+    <color name="Gey">#FFC5C5C5</color>
 <color name="azulTransparente">#404040FF</color>
 
 </resources>

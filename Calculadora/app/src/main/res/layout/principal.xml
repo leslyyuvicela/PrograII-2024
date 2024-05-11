@@ -7,60 +7,69 @@
     tools:context=".inicio">
 
     <ImageView
-        android:layout_width="200dp"
+        android:id="@+id/imgTitulo"
+        android:layout_width="238dp"
         android:layout_height="40dp"
         android:layout_marginTop="75dp"
         android:layout_toRightOf="@+id/btnMenu"
-        android:src="@drawable/nombre_tienda"
+        android:layout_marginLeft="10dp"
         android:scaleType="fitCenter"
-        />
-    <ImageButton
-        android:id="@+id/btnMapa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:tint="@color/Blue"
-        app:srcCompat="@android:drawable/ic_dialog_map"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="340dp"
-        />
-
+        android:src="@drawable/ic_titulo" />
     <ImageButton
         android:id="@+id/btnPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="280dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:tint="@color/Red"
         android:layout_marginTop="75dp"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        app:tint="@color/Blue"
+        android:layout_toRightOf="@+id/btnUbicacion"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/ic_usuario_vacio"
+        />
 
+    <ImageButton
+        android:id="@+id/btnUbicacion"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_toRightOf="@+id/imgTitulo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/ic_ubicacion"
+        android:backgroundTint="@color/DarkBlue"
         />
 
     <ImageButton
         android:id="@+id/btnMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="75dp"
-        app:srcCompat="@android:drawable/ic_dialog_dialer"
-        app:tint="@color/Blue" />
+        android:scaleType="fitCenter"
+        android:background="@drawable/ic_menu" />
 
     <ImageButton
         android:id="@+id/btnFiltrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="120dp"
-        app:srcCompat="@android:drawable/ic_menu_search"
-        app:tint="@color/Blue" />
+        android:background="@drawable/ic_filtrar"
+        android:scaleType="fitCenter"
+/>
 
     <EditText
         android:id="@+id/txtBuscar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="Buscar"
         android:layout_marginTop="125dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="80dp"/>
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/fondo_redondo"
+        android:paddingLeft="20dp"
+        android:drawableRight="@drawable/ic_buscar"
+
+        />
 
 
     <RelativeLayout

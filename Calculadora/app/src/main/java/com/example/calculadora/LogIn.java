@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,7 +30,8 @@ import org.w3c.dom.Document;
 
 public class LogIn extends AppCompatActivity {
     EditText txtCorreo, txtContraseña;
-    Button btnRegistrarse, btnIniciarSesion;
+    TextView btnRegistrarse;
+    Button  btnIniciarSesion;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     ProgressBar progressBar;
@@ -59,23 +61,24 @@ public class LogIn extends AppCompatActivity {
                 contraseña= txtContraseña.getText().toString();
                 if(correo.isEmpty() || contraseña.isEmpty()){
                     mostrarMsg("El correo o la contraseña no deben estar vacíos");
-                    return;
                 }
-                mAuth.signInWithEmailAndPassword(correo, contraseña).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                progressBar.setVisibility(View.GONE);
-                                mostrarMsg("Bienvenido");
-                                abrirPrincipal();
+                else {
+                    mAuth.signInWithEmailAndPassword(correo, contraseña).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    mostrarMsg("Bienvenido");
+                                    abrirPrincipal();
 
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                mostrarMsg("Falló el inicio de sesión");
-                            }
-                        });
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    mostrarMsg("Falló el inicio de sesión");
+                                }
+                            });
+                }
+                progressBar.setVisibility(View.GONE);
             }
         });
 btnRegistrarse.setOnClickListener(new View.OnClickListener() {
