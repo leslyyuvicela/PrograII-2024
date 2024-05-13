@@ -1,4 +1,4 @@
-package com.example.calculadora;
+package com.example.calculadora.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.calculadora.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class inicio extends AppCompatActivity {
+public class Inicio extends AppCompatActivity {
 
     Button btnLogIn, btnRegistrarse, btnExplorar;
     FirebaseAuth mAuth;

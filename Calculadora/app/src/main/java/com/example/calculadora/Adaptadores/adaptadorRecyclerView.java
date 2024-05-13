@@ -1,8 +1,7 @@
-package com.example.calculadora;
+package com.example.calculadora.Adaptadores;
 
 import static com.example.calculadora.R.*;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Paint;
@@ -17,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.calculadora.Modelos.Productos;
+
 import java.util.List;
 
 public class adaptadorRecyclerView extends RecyclerView.Adapter<adaptadorRecyclerView.ViewHolder> {
@@ -29,7 +30,7 @@ public class adaptadorRecyclerView extends RecyclerView.Adapter<adaptadorRecycle
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext())
-                .inflate(layout.listview_imagenes, parent, false);
+                .inflate(layout.vista_producto, parent, false);
         return new ViewHolder(vista);
     }
 
@@ -37,10 +38,10 @@ public class adaptadorRecyclerView extends RecyclerView.Adapter<adaptadorRecycle
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 Productos p= productos.get(position);
 String nombre = p.getNombre();
-Double precioCompra = p.getCosto();
-Double ganancia = p.getGanancia();
+Double precioCompra = p.getPrecioCompra();
+Double margenGanancia = p.getMargenGanancia();
 Double descuento = p.getDescuento();
-Double precioVenta = precioCompra*(1+ganancia/100);
+Double precioVenta = precioCompra*(1+margenGanancia/100);
 
 if(descuento==0){
     holder.cuadroDescuento.setVisibility(View.GONE);
@@ -60,7 +61,7 @@ if(descuento==0){
         holder.cuadroDescuento.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), color.Red));
 }
 }
-        Bitmap bitmap = BitmapFactory.decodeFile(p.getFoto());
+        Bitmap bitmap = BitmapFactory.decodeFile(p.getUrlFoto());
         holder.img.setImageBitmap(bitmap);
         holder.tvNombre.setText(nombre);
 

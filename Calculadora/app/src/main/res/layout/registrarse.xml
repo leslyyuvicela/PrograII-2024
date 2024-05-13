@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registrarse">
+    tools:context=".Actividades.Registrarse"
+    >
     <ImageView
         android:id="@+id/titulo"
         android:layout_width="270dp"
@@ -60,6 +61,15 @@
         android:layout_marginTop="240dp"
         android:background="@drawable/cuadro_redondeado"
         >
+        <ImageView
+            android:id="@+id/ic_nombres"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_usuario"
+            android:layout_marginTop="56dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            />
     <EditText
         android:id="@+id/txtNombres"
         android:layout_width="match_parent"
@@ -71,7 +81,17 @@
         android:paddingLeft="50dp"
         android:paddingRight="10dp"
         android:background="@drawable/fondo_redondo"
-        android:textSize="18dp"
+        android:textSize="18dp"/>
+        <ImageView
+            android:id="@+id/ic_apellidos"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_usuario"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtNombres"
+            />
 />
 
     <EditText
@@ -87,6 +107,16 @@
         android:paddingRight="10dp"
         android:background="@drawable/fondo_redondo"
         android:textSize="18dp"/>
+        <ImageView
+            android:id="@+id/ic_correo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_correo"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtApellidos"
+            />
     <EditText
         android:id="@+id/txtCorreoReg"
         android:layout_width="match_parent"
@@ -102,6 +132,17 @@
         android:background="@drawable/fondo_redondo"
         android:textSize="18dp"
         />
+        <ImageView
+            android:id="@+id/ic_telefono"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_telefono"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtCorreoReg"
+
+            />
     <EditText
         android:id="@+id/txtTelefono"
         android:layout_width="match_parent"
@@ -114,7 +155,21 @@
         android:paddingLeft="50dp"
         android:paddingRight="10dp"
         android:background="@drawable/fondo_redondo"
-        android:textSize="18dp"/>
+        android:textSize="18dp"
+        android:inputType="phone"
+        />
+
+        <ImageView
+            android:id="@+id/ic_direccion"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_ubicacion"
+            android:backgroundTint="@color/DarkBlue"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtTelefono"
+            />
     <EditText
         android:id="@+id/txtDireccion"
         android:layout_width="match_parent"
@@ -128,6 +183,16 @@
         android:paddingRight="10dp"
         android:background="@drawable/fondo_redondo"
         android:textSize="18dp"/>
+        <ImageView
+            android:id="@+id/ic_clave"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_clave"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtDireccion"
+            />
     <EditText
         android:id="@+id/txtContraseñaReg"
         android:layout_width="match_parent"
@@ -143,6 +208,16 @@
         android:background="@drawable/fondo_redondo"
         android:textSize="18dp"
         />
+        <ImageView
+            android:id="@+id/ic_confirmarClave"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_clave"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:elevation="2dp"
+            android:layout_below="@id/txtContraseñaReg"
+            />
     <EditText
         android:id="@+id/txtConfirmarContraseña"
         android:layout_width="match_parent"

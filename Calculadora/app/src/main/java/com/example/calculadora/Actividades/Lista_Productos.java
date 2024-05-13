@@ -1,4 +1,4 @@
-package com.example.calculadora;
+package com.example.calculadora.Actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -158,8 +158,8 @@ public class Lista_Productos extends AppCompatActivity {/*
                             misDatosJSONObject.getString("descripcion"),
                             misDatosJSONObject.getString("marca"),
                             misDatosJSONObject.getString("presentacion"),
-                            misDatosJSONObject.getString("costo"),
-                            misDatosJSONObject.getString("ganancia"),
+                            misDatosJSONObject.getString("precioCompra"),
+                            misDatosJSONObject.getString("margenGanancia"),
                             misDatosJSONObject.getString("stock"),
                             misDatosJSONObject.getString("urlCompletaImg"),
                             misDatosJSONObject.getString("_id"),
@@ -189,8 +189,8 @@ public class Lista_Productos extends AppCompatActivity {/*
                             misDatosJSONObject.getString("descripcion"),
                             misDatosJSONObject.getString("marca"),
                             misDatosJSONObject.getString("presentacion"),
-                            misDatosJSONObject.getString("costo"),
-                            misDatosJSONObject.getString("ganancia"),
+                            misDatosJSONObject.getString("precioCompra"),
+                            misDatosJSONObject.getString("margenGanancia"),
                             misDatosJSONObject.getString("stock"),
                             misDatosJSONObject.getString("urlCompletaImg"),
                             misDatosJSONObject.getString("_id"),
@@ -307,8 +307,8 @@ public class Lista_Productos extends AppCompatActivity {/*
                     jsonObject.put("descripcion",cProductos.getString(2));//descripcion
                     jsonObject.put("marca",cProductos.getString(3));//marca
                     jsonObject.put("presentacion",cProductos.getString(4));//presentacion
-                    jsonObject.put("costo", cProductos.getString(5));//costo
-                    jsonObject.put("ganancia", cProductos.getString(6));//ganancia
+                    jsonObject.put("precioCompra", cProductos.getString(5));//precioCompra
+                    jsonObject.put("margenGanancia", cProductos.getString(6));//margenGanancia
                     jsonObject.put("stock", cProductos.getString(7));//stock
                     jsonObject.put("urlCompletaImg",cProductos.getString(8));//foto
                     jsonObject.put("_id",cProductos.getString(9));//_id

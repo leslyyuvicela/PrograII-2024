@@ -41,16 +41,15 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-implementation("com.tbuonomo:dotsindicator:5.0")
-
+    implementation("com.tbuonomo:dotsindicator:5.0")
     // FirebaseUI for Cloud Firestore
     implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
-
     // FirebaseUI for Firebase Auth
     implementation ("com.firebaseui:firebase-ui-auth:8.0.2")
-
     // FirebaseUI for Cloud Storage
     implementation ("com.firebaseui:firebase-ui-storage:8.0.2")
+    //Picasso para usar imagenes
+    implementation("com.squareup.picasso:picasso:2.5.2")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")

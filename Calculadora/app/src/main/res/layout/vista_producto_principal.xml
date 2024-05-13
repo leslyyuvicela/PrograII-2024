@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/cuadro_redondeado"
+    android:backgroundTint="@color/LightLightBlue"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp"
+    >
+
+    <TextView
+        android:id="@+id/lblNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Nombre"
+        android:layout_toRightOf="@+id/cvFoto"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="@color/DarkBlue"/>
+
+    <TextView
+        android:id="@+id/lblPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:text="$00.00"
+        android:layout_toRightOf="@id/cvFoto"
+        android:layout_below="@+id/lblNombre"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/DarkBlue"/>
+    <TextView
+        android:id="@+id/lblPrecioAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$00.00"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/lblPrecio"
+        android:layout_below="@id/lblNombre"
+        android:textSize="15dp"
+        android:textColor="@color/DarkBlue"
+        />
+
+    <RelativeLayout
+        android:id="@+id/cuadroDescuento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPrecio"
+        android:layout_toRightOf="@id/cvFoto"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+android:layout_marginLeft="15dp"
+        android:background="@color/Red"
+        >
+
+        <TextView
+            android:id="@+id/lblDescuento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="15dp"
+            android:text="- 00%"
+            android:textColor="@color/white"
+            />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvFoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="20dp"
+        >
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_imagen"
+            android:backgroundTint="@color/TransparentBlue"
+            />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.calculadora;
+package com.example.calculadora.Adaptadores;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
+
+import com.example.calculadora.Modelos.Productos;
+import com.example.calculadora.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -47,7 +50,7 @@ public class adaptadorImagenes extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View itemView = layoutInflater.inflate(R.layout.listview_imagenes, viewGroup, false);
+        View itemView = layoutInflater.inflate(R.layout.vista_producto, viewGroup, false);
         tvNombre=itemView.findViewById(R.id.lblNombre);
         tvPrecio=itemView.findViewById(R.id.lblPrecio);
         tvPrecioAnterior=itemView.findViewById(R.id.lblPrecioAnterior);
@@ -60,9 +63,9 @@ public class adaptadorImagenes extends BaseAdapter {
             misProductos = datosProductosArrayList.get(i);
             double precioAnterior=0;
             double descuento= misProductos.getDescuento();
-            double costo=misProductos.getCosto();
-            double ganancia =misProductos.getGanancia();
-            double precio = costo*(1+ganancia/100);
+            double precioCompra=misProductos.getPrecioCompra();
+            double margenGanancia =misProductos.getMargenGanancia();
+            double precio = precioCompra*(1+margenGanancia/100);
 
 
             if(descuento==0){
@@ -83,19 +86,21 @@ public class adaptadorImagenes extends BaseAdapter {
                 }
 
                 if (descuento>0 && descuento < 30 ) {
+                    cuadroDescuento.setBackground(ContextCompat.getDrawable(itemView.getContext(),R.drawable.cuadro_redondeado));
                     cuadroDescuento.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.Yellow));
-
                 } else if (descuento>=30 && descuento < 60) {
                     cuadroDescuento.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.Orange));
+                    cuadroDescuento.setBackground(ContextCompat.getDrawable(itemView.getContext(),R.drawable.cuadro_redondeado));
                 } else if (descuento>=60) {
                     cuadroDescuento.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.Red));
+                    cuadroDescuento.setBackground(ContextCompat.getDrawable(itemView.getContext(),R.drawable.cuadro_redondeado));
                 }
             }
             tvNombre.setText(misProductos.getNombre());
 
 
             ImageView imgView = itemView.findViewById(R.id.imgFoto);
-            Bitmap bitmap = BitmapFactory.decodeFile(misProductos.getFoto());
+            Bitmap bitmap = BitmapFactory.decodeFile(misProductos.getUrlFoto());
             imgView.setImageBitmap(bitmap);
 
         }catch (Exception e){

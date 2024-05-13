@@ -1,11 +1,13 @@
-package com.example.calculadora;
+package com.example.calculadora.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Chat extends AppCompatActivity {
+import com.example.calculadora.R;
 
+
+public class Chat extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
