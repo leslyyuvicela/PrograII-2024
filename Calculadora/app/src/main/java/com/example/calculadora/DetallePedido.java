@@ -1,16 +1,14 @@
-package com.example.calculadora.Actividades;
+package com.example.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.calculadora.R;
-
-public class Carrito extends AppCompatActivity {
+public class DetallePedido extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.carrito);
+        setContentView(R.layout.detalle_pedido);
     }
 }

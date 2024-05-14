@@ -2,20 +2,14 @@ package com.example.calculadora.Actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.calculadora.Adaptadores.AdaptadorProductos;
@@ -43,13 +37,13 @@ public class Principal extends AppCompatActivity {
     DocumentReference doc;
     CollectionReference colProductos;
     FloatingActionButton btnAgregarProducto;
-    ImageButton btnBuscar;
+    ImageButton btnBuscar, btnCarrito, btnChat, btnPerfil;
     detectarInternet di;
     EditText txtBuscar;
     Query query;
    RecyclerView rvDescuentos;
    AdaptadorProductos adProductos;
-    String  rol = "", campo, filtro;
+    String  rol = "", campo="nombre", filtro="";
 
 Productos productos;
     final ArrayList<Productos> alProductos=new ArrayList<Productos>();
@@ -60,6 +54,7 @@ Productos productos;
     protected void onStart() {
         super.onStart();
         adProductos.startListening();
+        mostrarProductos(campo,filtro);
     }
     @Override
     protected void onStop() {
@@ -76,7 +71,10 @@ adProductos.stopListening();
         fStore=FirebaseFirestore.getInstance();
         auth=FirebaseAuth.getInstance();
         txtBuscar=findViewById(R.id.txtBuscar);
+        btnCarrito=findViewById(R.id.btnCarrito);
+        btnChat=findViewById(R.id.btnChat);
         btnAgregarProducto=findViewById(R.id.btnAgregarProducto);
+        btnPerfil=findViewById(R.id.btnPerfil);
         btnAgregarProducto.setVisibility(View.GONE);
         btnBuscar= findViewById(R.id.btnBuscar);
         //grdDescuentos=findViewById(R.id.grdDescuentos);
@@ -124,14 +122,33 @@ adProductos.stopListening();
                        agregarProducto();
                    }
                });
+               btnCarrito.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       Intent i = new Intent(getApplicationContext(), ListaPedidos.class);
+                       startActivity(i);
+                   }
+               });
+               btnChat.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       Intent chat = new Intent(getApplicationContext(), Chat.class);
+                       startActivity(chat);
+                   }
+               });
 
+btnPerfil.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        cerrarSesión();
+    }
+});
     }
 
     private void agregarProducto() {
         Intent agregarProducto = new Intent(getApplicationContext(), Agregar_Producto.class);
         agregarProducto.putExtra("idProducto","");
         startActivity(agregarProducto);
-        finish();
     }
 
     private void mostrarProductos(String campo, String filtro) {

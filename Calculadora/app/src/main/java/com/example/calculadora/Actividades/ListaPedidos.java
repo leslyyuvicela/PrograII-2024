@@ -9,28 +9,29 @@ import android.widget.ImageButton;
 
 import com.example.calculadora.R;
 
+public class ListaPedidos extends AppCompatActivity {
+    ImageButton btnChat, btnPrincipal;
 
-public class Chat extends AppCompatActivity {
-    ImageButton btnListaPedidos, btnPrincipal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chat);
+        setContentView(R.layout.lista_pedidos);
 
-        btnListaPedidos= findViewById(R.id.btnCarrito);
+        btnChat=findViewById(R.id.btnChat);
         btnPrincipal=findViewById(R.id.btnPrincipal);
-        btnPrincipal.setOnClickListener(new View.OnClickListener() {
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Principal.class);
+                Intent i = new Intent(getApplicationContext(), Chat.class);
                 startActivity(i);
                 finish();
             }
         });
-        btnListaPedidos.setOnClickListener(new View.OnClickListener() {
+        btnPrincipal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ListaPedidos.class);
+                Intent i = new Intent(getApplicationContext(), Principal.class);
                 startActivity(i);
                 finish();
             }
