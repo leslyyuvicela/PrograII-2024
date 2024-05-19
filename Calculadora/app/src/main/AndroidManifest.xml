@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -34,9 +34,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculadora"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".DetallePedido"
+            android:name=".Actividades.ListaChats"
+            android:exported="false" />
+        <activity
+            android:name=".Actividades.Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Actividades.Mapa"
+            android:exported="false" />
+        <activity
+            android:name=".Actividades.DetallePedido"
             android:exported="false" />
         <activity
             android:name=".Actividades.ListaPedidos"
@@ -52,7 +61,7 @@
             android:exported="false" />
         <activity
             android:name=".Actividades.Inicio"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,7 +83,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.calculadora.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
@@ -89,42 +98,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <service
-            android:name=".MyFirebaseMessagingService"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".MyFirebaseInstanceIDService"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-
-        <receiver
-            android:name=".MyReceiverSMS"
-            android:enabled="true"
-            android:exported="true" >
-            <intent-filter android:priority="1000" >
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".MyReceiverCALL"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

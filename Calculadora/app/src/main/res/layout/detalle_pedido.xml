@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetallePedido">
+    tools:context=".Actividades.DetallePedido">
+
     <View
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:background="@color/LightLightBlue"
-        />
+        android:background="@color/LightLightBlue" />
+
     <ImageView
         android:id="@+id/titulo"
         android:layout_width="270dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/titulo"
-        android:backgroundTint="@color/DarkBlue"/>
+        android:backgroundTint="@color/DarkBlue" />
 
     <ImageView
         android:id="@+id/logo"
@@ -27,6 +28,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/logo" />
+
     <ImageButton
         android:id="@+id/btnRegresar"
         android:layout_width="30dp"
@@ -35,122 +37,342 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_regresar"
-        android:backgroundTint="@color/DarkBlue"
-/>
+        android:backgroundTint="@color/DarkBlue" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btnRegresar"
         android:layout_below="@id/titulo"
-        android:layout_marginTop="22dp"
         android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/DarkBlue"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@id/btnRegresar"
         android:text="Mi pedido"
-        />
+        android:textColor="@color/DarkBlue"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/tvFechaPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fecha del pedido: 25/04/24"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
         android:layout_below="@id/btnRegresar"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
+        android:text="Fecha del pedido: 25/04/24"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
 
         />
+
     <TextView
         android:id="@+id/tvFechaEntrega"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:text="Fecha entrega: -"
-        android:textSize="15dp"
         android:textColor="@color/black"
-        android:layout_marginLeft="30dp"
-        android:textStyle="bold"
-        android:layout_below="@id/tvFechaPedido"
-        />
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="45dp"
         android:text="Direccion de entrega"
-        android:textSize="15dp"
         android:textColor="@color/black"
-        android:layout_marginLeft="30dp"
-        android:textStyle="bold"
-        android:layout_below="@id/tvFechaPedido"
-        />    <EditText
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-    android:layout_marginRight="10dp"
-    android:layout_centerHorizontal="true"
-        android:text="1a Calle Ote. Colonia Las Flores, Jiquilisco"
-        android:textSize="15dp"
-        android:textColor="@color/DarkBlue"
-        android:layout_marginLeft="30dp"
-        android:textStyle="bold"
         android:layout_below="@id/tvFechaPedido"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
-    android:paddingTop="3dp"
-    android:paddingBottom="3dp"
-    android:background="@drawable/cuadro_redondeado"
-        />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/cuadro_redondeado"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="3dp"
+        android:text="1a Calle Ote. Colonia Las Flores, Jiquilisco"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:text="Productos"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="120dp"
+        android:text="Cantidad"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="120dp"
+        android:text="Precio"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="150dp"
+        android:text="Producto 1"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="150dp"
+        android:text="-    1    +"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="150dp"
+        android:text="$49.99"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="180dp"
+        android:text="Producto 2"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="180dp"
+        android:text="-    5    +"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="180dp"
+        android:text="$500"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="210dp"
+        android:text="Producto 3"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="210dp"
+        android:text="-    3    +"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="210dp"
+        android:text="$14.31"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="350dp"
+        android:text="Total de compra:"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="350dp"
+        android:text="$564.30"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="390dp"
+        android:text="Estado:"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="290dp"
+        android:text="-"
+        android:textColor="@color/DarkBlue"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@drawable/ic_basurero"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="212dp"
+        android:backgroundTint="@color/Red"
+        /> <ImageButton
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@drawable/ic_basurero"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="182dp"
+        android:backgroundTint="@color/Red"
+        /> <ImageButton
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@drawable/ic_basurero"
+        android:layout_below="@id/tvFechaPedido"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="152dp"
+        android:backgroundTint="@color/Red"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnPrincipal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="@color/LightBlue"
+        android:text="Cancelar pedido"
+        android:textColor="@color/DarkBlue" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnPrincipal"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/LightBlue"
+        android:text="Realizar pedido"
+        android:textColor="@color/DarkBlue" />
+
 
     <View
         android:layout_width="80dp"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/cuadro_redondeado"
-        android:backgroundTint="@color/LightBlue"
         android:layout_marginBottom="5dp"
-        />
+        android:background="@drawable/cuadro_redondeado"
+        android:backgroundTint="@color/LightBlue" />
+
     <ImageButton
         android:id="@+id/btnPrincipal"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/ic_inicio"
-        android:elevation="4dp"
         android:backgroundTint="@color/DarkBlue"
-        />
+        android:elevation="4dp" />
 
     <ImageButton
         android:id="@+id/btnChat"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/ic_mensajes"
-        android:elevation="4dp"
         android:backgroundTint="@color/DarkBlue"
-        />
+        android:elevation="4dp" />
+
     <ImageButton
         android:id="@+id/btnCarrito"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/ic_carrito"
-        android:elevation="4dp"
         android:backgroundTint="@color/DarkBlue"
-        />
+        android:elevation="4dp" />
 </RelativeLayout>

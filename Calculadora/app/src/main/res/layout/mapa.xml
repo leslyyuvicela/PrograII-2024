@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actividades.Mapa">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@color/LightLightBlue" />
+
+    <ImageView
+        android:id="@+id/titulo"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/titulo"
+        android:backgroundTint="@color/DarkBlue" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/btnRegresar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/titulo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_regresar"
+        android:backgroundTint="@color/DarkBlue" />
+
+    <TextView
+        android:id="@+id/tvSucursales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titulo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@id/btnRegresar"
+        android:text="Nuestras Sucurales"
+        android:textColor="@color/DarkBlue"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <View
+        android:id="@+id/imgMapa"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/tvSucursales"
+        android:background="@drawable/img_mapa"
+        />
+
+
+    <ImageButton
+        android:id="@+id/btnPrincipal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/ic_inicio"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgMapa"
+        android:layout_marginLeft="60dp"
+        android:text="Techno Store - Usulután"
+        android:textColor="@color/DarkBlue"
+        />
+    <ImageButton
+        android:layout_width="17dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/imgMapa"
+        android:layout_marginLeft="35dp"
+        android:background="@drawable/ubi_roja"
+        />
+    <TextView
+        android:id="@+id/tvDir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNombre"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:text="Direccion: 2 Calle Ote., Jiquilisco"
+        android:textColor="@color/DarkBlue"
+        /><TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDir"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:text="Coordenadas: 13,3253671, -88,5690663"
+        android:textColor="@color/DarkBlue"
+        />
+    <View
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/cuadro_redondeado"
+        android:backgroundTint="@color/LightBlue"
+        />
+    <ImageButton
+        android:id="@+id/btnChat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/ic_mensajes"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
+    <ImageButton
+        android:id="@+id/btnCarrito"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/ic_carrito"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
+    <ImageButton
+
+        android:id="@+id/btnAgregarProducto"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        android:elevation="4dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/btnPrincipal"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_agregar_ubicacion"
+        android:backgroundTint="@color/DarkBlue"
+        />
+
+</RelativeLayout>

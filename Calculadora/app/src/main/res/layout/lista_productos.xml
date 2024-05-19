@@ -9,39 +9,179 @@
     tools:context=".Actividades.Lista_Productos">
 
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@color/LightLightBlue"
+        />
+    <ImageView
+        android:id="@+id/titulo"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/titulo"
+        android:backgroundTint="@color/DarkBlue"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/btnPerfil"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:tint="@color/Red"
+        android:layout_marginTop="85dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/ic_usuario"
+        />
+
+    <ImageButton
+        android:id="@+id/btnUbicacion"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+
+        android:layout_toLeftOf="@id/btnPerfil"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/ic_ubicacion"
+        android:backgroundTint="@color/DarkBlue"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/titulo"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/ic_menu" />
+    <TextView
+        android:id="@+id/tvCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnMenu"
+        android:layout_below="@+id/titulo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Categoria"
+        android:textColor="@color/DarkBlue"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
     <EditText
-        android:id="@+id/txtBuscarProductos"
+        android:id="@+id/txtBuscar"
+        android:layout_width="320dp"
+        android:layout_height="35dp"
+
+        android:hint="¿Qué estas buscando?"
+        android:layout_below="@id/btnMenu"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/fondo_redondo"
+        android:paddingLeft="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/DarkBlue"
+        />
+
+    <ImageButton
+        android:id="@+id/btnBuscar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/txtBuscar"
+        android:layout_below="@id/btnPerfil"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_buscar"
+        />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar Productos" />
-    <ListView
-        android:id="@+id/ltsProductos"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAbrirNuevosProductos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@android:drawable/ic_input_add" />
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/txtBuscar"
+        android:layout_above="@+id/btnPrincipal">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnSincronizarDatosProductos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDescuentos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/vista_producto_principal"
+            android:numColumns="2"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAgregarProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/fondo_redondo"
+            android:src="@android:drawable/ic_input_add" />
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="80dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="80dp"
-        android:src="@android:drawable/stat_notify_sync" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/cuadro_redondeado"
+        android:backgroundTint="@color/LightBlue"
+        />
+    <ImageButton
+        android:id="@+id/btnPrincipal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/ic_inicio"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
+
+    <ImageButton
+        android:id="@+id/btnChat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/ic_mensajes"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
+    <ImageButton
+        android:id="@+id/btnCarrito"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/ic_carrito"
+        android:elevation="4dp"
+        android:backgroundTint="@color/DarkBlue"
+        />
 
 </RelativeLayout>

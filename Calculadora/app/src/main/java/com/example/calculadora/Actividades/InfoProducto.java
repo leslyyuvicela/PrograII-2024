@@ -1,4 +1,4 @@
-package com.example.calculadora.Adaptadores;
+package com.example.calculadora.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 

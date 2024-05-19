@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,18 +44,20 @@ import java.util.Map;
 
 public class Agregar_Producto extends AppCompatActivity {
     TextView tempVal;
-    Button btnGuardar;
+    Button btnGuardar, btnAgregarProducto;
     FloatingActionButton btnRegresar;
     private String accion="nuevo", urlFoto ="",idProducto="", actualizado="",
-    categoria, codigo, descripcion, marca, nombre;
+    categoria, codigo, descripcion, marca, nombre, rol;
     Double descuento,margenGanancia,precioCompra, stock;
     Intent tomarFotoIntent,cargarFotoIntent;
     EditText txtNombre,txtCodigo,txtMarca,txtDescripcion,txtCategoria, txtmargenGanancia,
     txtPrecioCompra,txtDescuento,txtStock;
     ImageView img;
+    FirebaseAuth auth;
     utilidades utls;
     detectarInternet di;
     private FirebaseFirestore fStore;
+    FirebaseUser usuario;
     DocumentReference doc;
 
     StorageReference sRef;
@@ -82,11 +86,35 @@ public class Agregar_Producto extends AppCompatActivity {
         txtStock=findViewById(R.id.txtStock);
         fStore = FirebaseFirestore.getInstance();
         sRef = FirebaseStorage.getInstance().getReference();
+        btnAgregarProducto=findViewById(R.id.btnGuardarProducto);
         nuevo = true;
         if (!idProducto.equals("")){
             nuevo=false;
             obtenerProducto(idProducto);
         }
+
+        try {
+            usuario = auth.getCurrentUser();
+        } catch (Exception e) {
+
+        }
+        if (usuario != null) {
+
+            doc = fStore.collection("Usuarios").document(usuario.getUid());
+            doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    rol = documentSnapshot.getString("rol");
+                    configurarBotonAñadir(rol);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    mostrarMsg(e.getMessage());
+                }
+            });
+        }
+
 
 btnGuardar.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -114,14 +142,7 @@ btnGuardar.setOnClickListener(new View.OnClickListener() {
             }
         });
 
-        btnRegresar = findViewById(R.id.btnRegresarListaProductos);
-        btnRegresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                regresarListaProductos();
-                finish();
-            }
-        });
+
 
     }
 
@@ -315,5 +336,16 @@ btnGuardar.setOnClickListener(new View.OnClickListener() {
         startActivity(abrirVentana);
         finish();
     }
-    private void mostrarDatosProductos(){}
+    private void configurarBotonAñadir(String rol) {
+        try {
+            if (!(rol.equals("admin"))) {
+                btnAgregarProducto.setVisibility(View.GONE);
+
+            } else {
+                btnAgregarProducto.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception e) {
+            mostrarMsg(e.getMessage());
+        }
+    }
 }

@@ -99,21 +99,32 @@ android:layout_marginTop="20dp"
     android:layout_below="@id/txtBuscar"
         android:layout_above="@+id/btnPrincipal">
 
+<RelativeLayout
+    android:id="@+id/lyAnuncios"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cuadro_redondeado"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:elevation="1dp"
+    >
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpAnuncios"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="200dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-android:background="@drawable/cuadro_redondeado"
+        android:layout_centerHorizontal="true"
+        android:elevation="3dp"
         />
-
+</RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDescuentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/vpAnuncios"
+        android:layout_below="@+id/tvPromociones"
         tools:listitem="@layout/vista_producto_principal"
         android:numColumns="2"
         />
@@ -130,7 +141,19 @@ android:background="@drawable/cuadro_redondeado"
             android:background="@drawable/fondo_redondo"
             android:src="@android:drawable/ic_input_add" />
 
+        <TextView
+            android:id="@+id/tvPromociones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promociones"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/lyAnuncios"
+            android:layout_marginTop="10dp"
 
+            android:textColor="@color/DarkBlue"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
     </RelativeLayout>
     <View
         android:layout_width="80dp"
@@ -165,6 +188,7 @@ android:background="@drawable/cuadro_redondeado"
         android:elevation="4dp"
         android:backgroundTint="@color/DarkBlue"
         />
+
     <ImageButton
         android:id="@+id/btnCarrito"
         android:layout_width="40dp"

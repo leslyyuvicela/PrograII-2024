@@ -119,7 +119,7 @@ holder.itemView.setVisibility(View.GONE);
     }
 
     private boolean aplicarFiltro(String campo) {
-       return campo.matches("^"+filtro+".*");
+       return campo.toLowerCase().trim().matches("^"+filtro+".*");
     }
 
     @NonNull
