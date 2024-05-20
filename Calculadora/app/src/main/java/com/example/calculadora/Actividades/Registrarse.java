@@ -15,11 +15,14 @@ import com.example.calculadora.Actividades.Principal;
 import com.example.calculadora.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.installations.Utils;
+import com.google.type.DateTime;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,9 +82,9 @@ btnRegistrarse.setOnClickListener(new View.OnClickListener() {
                                 userInfo.put("telefono", telefono);
                                 userInfo.put("direccion", direccion);
                                 userInfo.put("rol", "cliente");
-
                                 doc.set(userInfo);
                                 mostrarMsg("Usuario registrado con éxito");
+                                darBienvenida(usuario.getUid());
                                 abrirPrincipal();
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -96,6 +99,18 @@ btnRegistrarse.setOnClickListener(new View.OnClickListener() {
     }
 });
     }
+
+    private void darBienvenida(String id) {
+        Map<String, Object> mensaje = new HashMap<>();
+        mensaje.put("tipo", "texto");
+        mensaje.put("contenido", "Bienvenido a Techno Store");
+        mensaje.put("enviadoPor", "Techno Store");
+        mensaje.put("enviadoA", id);
+        mensaje.put("fecha", Timestamp.now());
+        mensaje.put("visto", false);
+        fStore.collection("mensajes").add(mensaje);
+    }
+
     private void abrirPrincipal(){
 
         Intent abrirPrincipal = new Intent(getApplicationContext(), Principal.class);
