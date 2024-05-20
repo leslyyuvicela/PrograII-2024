@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.calculadora.Adaptadores.AdaptadorAnuncios;
 import com.example.calculadora.Adaptadores.AdaptadorProductos;
-import com.example.calculadora.Modelos.Producto;
+import com.example.calculadora.Modelos.Productos;
 import com.example.calculadora.R;
 import com.example.calculadora.detectarInternet;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -57,8 +57,8 @@ public class Principal extends AppCompatActivity {
     private ViewPager vpAnuncios;
     private Handler handler;
 
-    Producto productos;
-    final ArrayList<Producto> alProductos = new ArrayList<Producto>();
+    Productos productos;
+    final ArrayList<Productos> alProductos = new ArrayList<Productos>();
 
     private final Runnable actualizarAnuncios =()->{
         anuncioActual=vpAnuncios.getCurrentItem();
@@ -290,8 +290,8 @@ btnMenu.setOnClickListener(new View.OnClickListener() {
 
     private void mostrarProductos(String campo, String filtro) {
         query = fStore.collection("productos").whereGreaterThan("descuento",0);
-        FirestoreRecyclerOptions<Producto> fOptions = new FirestoreRecyclerOptions.Builder<Producto>()
-                .setQuery(query, Producto.class).build();
+        FirestoreRecyclerOptions<Productos> fOptions = new FirestoreRecyclerOptions.Builder<Productos>()
+                .setQuery(query, Productos.class).build();
         adProductos = new AdaptadorProductos(fOptions, this, campo, filtro);
         adProductos.startListening();
         rvDescuentos.setAdapter(adProductos);

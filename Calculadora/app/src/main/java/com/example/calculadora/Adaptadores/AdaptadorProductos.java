@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calculadora.Actividades.Agregar_Producto;
-import com.example.calculadora.Modelos.Producto;
+import com.example.calculadora.Modelos.Productos;
 import com.example.calculadora.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
-public class AdaptadorProductos extends FirestoreRecyclerAdapter<Producto,AdaptadorProductos.ViewHolder> {
+public class AdaptadorProductos extends FirestoreRecyclerAdapter<Productos,AdaptadorProductos.ViewHolder> {
 DecimalFormat df =new DecimalFormat("#.##");
 Activity actividad;
 String campo, filtro;
@@ -44,7 +44,7 @@ private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
      *
      * @param options
      */
-    public AdaptadorProductos(@NonNull FirestoreRecyclerOptions<Producto> options, Activity actividad, String campo, String filtro) {
+    public AdaptadorProductos(@NonNull FirestoreRecyclerOptions<Productos> options, Activity actividad, String campo, String filtro) {
         super(options);
         this.actividad = actividad;
         this.campo = campo;
@@ -52,7 +52,7 @@ private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Producto p) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Productos p) {
         DocumentSnapshot ds = getSnapshots().getSnapshot(holder.getAdapterPosition());
         final String id = ds.getId();
         codigo = p.getCodigo();

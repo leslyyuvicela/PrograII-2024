@@ -1,6 +1,6 @@
 package com.example.calculadora.Modelos;
 
-public class Producto {
+public class Productos {
     String id;
     String codigo;
     String nombre;
@@ -16,7 +16,7 @@ public class Producto {
 
 
 
-    public Producto(String _id, String codigo, String categoria, String nombre, String descripcion, String marca, Double precioCompra, Double margenGanancia, Double descuento, Double stock, String urlFoto) {
+    public Productos(String _id, String codigo, String categoria, String nombre, String descripcion, String marca, Double precioCompra, Double margenGanancia, Double descuento, Double stock, String urlFoto) {
         this.id =_id;
         this.codigo = codigo;
         this.categoria=categoria;
@@ -30,7 +30,7 @@ public class Producto {
         this.urlFoto = urlFoto;
     }
 
-    public Producto(Producto productos) {
+    public Productos(Productos productos) {
     }
 
 
@@ -107,7 +107,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    public Producto() {}
+    public Productos() {}
 
     public Double getDescuento() {
         return descuento;
