@@ -1,16 +1,18 @@
 package com.example.calculadora.Modelos;
 
+import com.google.type.DateTime;
+
 public class Pedido {
     String id;
     String cliente;
     String direccionEntrega;
     String estado;
-    String fechaPedido;
-    String fechaEntregado;
+    DateTime fechaPedido;
+    DateTime fechaEntregado;
     String mensajeCancelacion;
 
     public Pedido(Pedido pedido){}
-    public Pedido(String id,String cliente, String direccionEntrega, String estado, String fechaPedido, String fechaEntregado, String mensajeCancelacion) {
+    public Pedido(String id, String cliente, String direccionEntrega, String estado, DateTime fechaPedido, DateTime fechaEntregado, String mensajeCancelacion) {
         this.id=id;
         this.cliente = cliente;
         this.direccionEntrega = direccionEntrega;
@@ -51,19 +53,19 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public String getFechaPedido() {
+    public DateTime getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(String fechaPedido) {
+    public void setFechaPedido(DateTime fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
-    public String getFechaEntregado() {
+    public DateTime getFechaEntregado() {
         return fechaEntregado;
     }
 
-    public void setFechaEntregado(String fechaEntregado) {
+    public void setFechaEntregado(DateTime fechaEntregado) {
         this.fechaEntregado = fechaEntregado;
     }
 

@@ -59,6 +59,7 @@
     android:layout_width="290dp"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
+    android:layout_marginBottom="20dp"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
     android:paddingLeft="10dp"
@@ -66,7 +67,6 @@
     android:text="Hola"
     android:background="@drawable/cuadro_redondeado"
     android:layout_above="@id/btnPrincipal"
-    android:layout_marginBottom="20dp"
     />
     <ImageButton
         android:id="@+id/btnEnviar"

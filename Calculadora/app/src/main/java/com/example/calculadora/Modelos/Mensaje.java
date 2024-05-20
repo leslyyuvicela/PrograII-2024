@@ -1,12 +1,15 @@
 package com.example.calculadora.Modelos;
 
+import com.google.type.DateTime;
+
 public class Mensaje {
     String id;
     String tipo;
     String enviadoPor;
     String enviadoA;
     String contenido;
-    String fecha;
+    DateTime fecha;
+    Boolean  visto;
 
     public String getId() {
         return id;
@@ -48,21 +51,27 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
 
-    public void setFecha(String fecha) {
+    public void setFecha(DateTime fecha) {
         this.fecha = fecha;
     }
 
+    public Boolean getVisto() {
+        return visto;
+    }
+
+    public void setVisto(Boolean visto) {
+        this.visto = visto;
+    }
+
     public Mensaje(Mensaje mensaje){}
-    public Mensaje(String id, String tipo, String enviadoPor, String enviadoA, String contenido, String fecha) {
+    public Mensaje(String id, String tipo, String enviadoPor, String enviadoA, String contenido, DateTime fecha, Boolean visto) {
         this.id = id;
         this.tipo = tipo;
         this.enviadoPor = enviadoPor;
         this.enviadoA = enviadoA;
         this.contenido = contenido;
         this.fecha = fecha;
+        this.visto=visto;
     }
 }

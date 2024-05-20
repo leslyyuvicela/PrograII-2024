@@ -53,8 +53,11 @@
             android:layout_below="@id/lbl2"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
             android:textSize="15dp"
-            android:text="Quiero saber si tendrán proximamente el..."
+            android:text="Quiero saber si tendrán proximamente el feheuhweuhufueh"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/black" />
 
     </RelativeLayout>
