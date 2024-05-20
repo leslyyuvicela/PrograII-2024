@@ -14,9 +14,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.calculadora.Adaptadores.AdaptadorAnuncios;
 import com.example.calculadora.Adaptadores.AdaptadorProductos;
-import com.example.calculadora.Modelos.Productos;
+import com.example.calculadora.Modelos.Producto;
 import com.example.calculadora.R;
 import com.example.calculadora.detectarInternet;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -51,8 +50,8 @@ public class Lista_Productos extends AppCompatActivity { FirebaseAuth auth;
     AdaptadorProductos adProductos;
     String rol = "", campo = "nombre", filtro = "", categoria;
 
-    Productos productos;
-    final ArrayList<Productos> alProductos = new ArrayList<Productos>();
+    Producto productos;
+    final ArrayList<Producto> alProductos = new ArrayList<Producto>();
 
     @Override
     protected void onStart() {
@@ -232,8 +231,8 @@ public class Lista_Productos extends AppCompatActivity { FirebaseAuth auth;
     private void mostrarProductos(String campo, String filtro, String categoria) {
         tvCategoria.setText(categoria);
         query = fStore.collection("productos").whereEqualTo("categoria",categoria);
-        FirestoreRecyclerOptions<Productos> fOptions = new FirestoreRecyclerOptions.Builder<Productos>()
-                .setQuery(query, Productos.class).build();
+        FirestoreRecyclerOptions<Producto> fOptions = new FirestoreRecyclerOptions.Builder<Producto>()
+                .setQuery(query, Producto.class).build();
         adProductos = new AdaptadorProductos(fOptions, this, campo, filtro);
         adProductos.startListening();
         rvProductos.setAdapter(adProductos);
