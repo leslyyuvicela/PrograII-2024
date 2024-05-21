@@ -11,56 +11,6 @@
         android:background="@color/LightLightBlue"
         />
 
-    <RelativeLayout
-        android:id="@+id/lyChat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/titulo"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/cuadro_redondeado"
-        android:backgroundTint="@color/LightLightBlue">
-
-        <TextView
-            android:id="@+id/lbl1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Pablo Perez"
-            android:textColor="@color/DarkBlue"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lbl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="90dp"
-            android:layout_toRightOf="@id/lbl1"
-            android:layout_marginBottom="20dp"
-            android:text="00:00 am"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/lbl3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lbl2"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:textSize="15dp"
-            android:text="Quiero saber si tendrán proximamente el feheuhweuhufueh"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/black" />
-
-    </RelativeLayout>
     <ImageView
         android:id="@+id/titulo"
         android:layout_width="270dp"
@@ -79,6 +29,28 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/logo" />
 
+    <TextView
+        android:id="@+id/tvMensajes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Mensajes de los clientes"
+        android:textSize="20dp"
+        android:textColor="@color/DarkBlue"
+        android:textStyle="bold"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMensajes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMensajes"
+        android:layout_above="@id/btnPrincipal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        tools:listitem="@layout/vista_chats"
+        />
 
     <View
         android:layout_width="80dp"

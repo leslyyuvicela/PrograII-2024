@@ -20,7 +20,7 @@
         android:layout_alignParentLeft="true"
         android:text="Nombre del usuario oooooooooooooooooooooooooooooooooo"
         android:textColor="@color/DarkBlue"
-        android:textSize="15dp"
+        android:textSize="16dp"
         android:ellipsize="end"
         android:maxLines="1"
         />
