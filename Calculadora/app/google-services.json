@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "856998091627",
+    "firebase_url": "https://practicaugb-2024-32fef-default-rtdb.firebaseio.com",
+    "project_id": "practicaugb-2024-32fef",
+    "storage_bucket": "practicaugb-2024-32fef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856998091627:android:f56f4afad37b7966c80a2e",
+        "android_client_info": {
+          "package_name": "com.example.calculadora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAmu1q3_CpCg7UCblGkS-dO7-s3zWaX68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

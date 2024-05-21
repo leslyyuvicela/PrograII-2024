@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,98 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/lblnum1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Num 1:"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="40dp"/>
+    <ImageButton
+        android:id="@+id/imgAmigo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginRight="165dp"
+        android:src="@android:drawable/ic_menu_camera" />
 
     <EditText
-        android:id="@+id/txtnum1"
-        android:inputType="numberDecimal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblnum1"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="-30dp"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="75dp" />
-
-    <TextView
-        android:id="@+id/lblnum2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtnum1"
-        android:layout_marginLeft="40dp"
+        android:id="@+id/txtnombre"
         android:layout_marginTop="40dp"
-        android:text="Num 2:" />
-
-    <EditText
-        android:id="@+id/txtnum2"
-        android:inputType="numberDecimal"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:layout_below="@id/imgAmigo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtnum1"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"/>
-
-    <Spinner
-        android:id="@+id/spnOpciones"
-        android:entries="@array/spnopciones"
-        android:layout_below="@+id/txtnum2"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="200dp"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtdireccion"
+        android:layout_marginTop="40dp"
+        android:hint="Direccion"
+        android:layout_below="@id/txtnombre"
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtTelefono"
+        android:layout_marginTop="40dp"
+        android:hint="Telefono"
+        android:inputType="phone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtdireccion"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtemail"
+        android:layout_marginTop="40dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtTelefono"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtdui"
+        android:layout_marginTop="40dp"
+        android:hint="DUI"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/txtemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btnCalcular"
+        android:id="@+id/btnGuardarAmigos"
+        android:text="GUARDAR AMIGO"
+        android:layout_below="@id/txtdui"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/optCalculadora"
-        android:layout_marginTop="40dp"
-        android:text="Calcular"/>
+        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/lblrespuesta"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRegresarListaAmigos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnCalcular"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="Respuesta: ?" />
-
-    <RadioGroup
-        android:id="@+id/optCalculadora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtnum2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp">
-        <RadioButton
-            android:id="@+id/optSuma"
-            android:text="SUMA"
-            android:checked="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optResta"
-            android:text="RESTA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optMultiplicacion"
-            android:text="MULTIPLICACION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/optDivision"
-            android:text="DIVISION"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
-
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@android:drawable/ic_menu_revert" />
 
 </RelativeLayout>
