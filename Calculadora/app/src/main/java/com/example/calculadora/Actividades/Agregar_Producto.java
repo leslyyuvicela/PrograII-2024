@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -84,7 +85,9 @@ public class Agregar_Producto extends AppCompatActivity {
         txtNombre=findViewById(R.id.txtnombre);
         txtPrecioCompra=findViewById(R.id.txtPrecioCompra);
         txtStock=findViewById(R.id.txtStock);
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build();
         fStore = FirebaseFirestore.getInstance();
+        fStore.setFirestoreSettings(settings);
         sRef = FirebaseStorage.getInstance().getReference();
         btnAgregarProducto=findViewById(R.id.btnGuardarProducto);
         nuevo = true;
@@ -164,7 +167,7 @@ btnGuardar.setOnClickListener(new View.OnClickListener() {
                 try{
                 uriLocal= Uri.parse(urlFoto);
 
-                Picasso.with(getApplicationContext()).load(urlFoto).resize(240,240).into(img);
+                Picasso.get().load(urlFoto).resize(240,240).into(img);
             }catch (Exception e){}
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -187,7 +190,7 @@ btnGuardar.setOnClickListener(new View.OnClickListener() {
             if( requestCode==COD_SEL_IMAGEN && resultCode==RESULT_OK ){
                 uriLocal =data.getData();
                 nuevo = false;
-                Picasso.with(getApplicationContext()).load(uriLocal).resize(180,180).into(img);
+                Picasso.get().load(uriLocal).resize(180,180).into(img);
             }else{
                 mostrarMsg("Se cancelo la toma de la foto");
 
@@ -198,34 +201,37 @@ btnGuardar.setOnClickListener(new View.OnClickListener() {
     }
 
     private void subirFoto(Uri uriFoto, Boolean nuevo) {
-        if(nuevo) {
-            String rutaFoto = rutaFotoStorage + "" + foto + "" + utls.generarIdUnico();
-            StorageReference referencia = sRef.child(rutaFoto);
-            referencia.putFile(uriFoto).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+        try {
+            if (nuevo) {
+                String rutaFoto = rutaFotoStorage + "" + foto + "" + utls.generarIdUnico();
+                StorageReference referencia = sRef.child(rutaFoto);
+                referencia.putFile(uriFoto).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
 
-                    while (!uriTask.isSuccessful()) ;
-                    if (uriTask.isSuccessful()) {
-                        uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                guardarProducto(uri.toString());
-                            }
-                        });
+                        while (!uriTask.isSuccessful()) ;
+                        if (uriTask.isSuccessful()) {
+                            uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    guardarProducto(uri.toString());
+                                }
+                            });
+                        }
+
                     }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
 
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
-        }
-        else{
-            guardarProducto(uriFoto.toString());
+                    }
+                });
+            } else {
+                guardarProducto(uriFoto.toString());
+            }
+        }catch (Exception e){
+            guardarProducto("");
         }
     }
 

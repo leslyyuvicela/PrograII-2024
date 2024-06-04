@@ -1,7 +1,15 @@
 package com.example.calculadora.Modelos;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Productos {
-    String id;
+    @PrimaryKey
+            @NonNull
+    String id = "";
+
     String codigo;
     String nombre;
     String descripcion;
@@ -12,11 +20,13 @@ public class Productos {
     String categoria;
     Double stock;
     String urlFoto;
+    String fotoLocal = "";
+
+Boolean actualizado = true;
 
 
 
-
-    public Productos(String _id, String codigo, String categoria, String nombre, String descripcion, String marca, Double precioCompra, Double margenGanancia, Double descuento, Double stock, String urlFoto) {
+    public Productos(String _id, String codigo, String categoria, String nombre, String descripcion, String marca, Double precioCompra, Double margenGanancia, Double descuento, Double stock, String urlFoto, String fotoLocal, Boolean actualizado) {
         this.id =_id;
         this.codigo = codigo;
         this.categoria=categoria;
@@ -28,6 +38,8 @@ public class Productos {
         this.descuento=descuento;
         this.stock = stock;
         this.urlFoto = urlFoto;
+        this.fotoLocal=fotoLocal;
+        this.actualizado=actualizado;
     }
 
     public Productos(Productos productos) {
@@ -127,5 +139,20 @@ public class Productos {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+    public Boolean getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(Boolean actualizado) {
+        this.actualizado = actualizado;
+    }
+
+    public String getFotoLocal() {
+        return fotoLocal;
+    }
+
+    public void setFotoLocal(String fotoLocal) {
+        this.fotoLocal = fotoLocal;
     }
 }

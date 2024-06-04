@@ -28,7 +28,7 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/logo" />
     <TextView
-        android:id="@+id/fecha"
+        android:id="@+id/tvfecha"
         android:layout_below="@id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,21 +39,21 @@
         android:textSize="17dp"
         android:text="Hoy"
         />
-<FrameLayout
-    android:id="@+id/msg"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/fecha"
-    >
-    <include layout="@layout/mensaje_enviado"/>
-</FrameLayout>
-    <FrameLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMensajes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/msg"
-        >
-        <include layout="@layout/mensaje_recibido"/>
-    </FrameLayout>
+        android:layout_above="@id/txtEscribirMsg"
+        android:layout_below="@+id/tvfecha"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:stackFromEnd="true"
+        tools:listitem="@layout/mensaje_recibido" />
+
 <EditText
     android:id="@+id/txtEscribirMsg"
     android:layout_width="290dp"
@@ -80,6 +80,7 @@
         android:backgroundTint="@color/DarkBlue"
         />
     <ImageButton
+        android:id="@+id/btnEnviarArchivo"
         android:layout_width="40dp"
         android:layout_height="44dp"
         android:layout_toRightOf="@id/btnEnviar"

@@ -15,11 +15,13 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.calculadora.Adaptadores.AdaptadorAnuncios;
-import com.example.calculadora.Adaptadores.AdaptadorProductos;
+import com.example.calculadora.Adaptadores.Firestore.AdAnunciosFirestore;
+import com.example.calculadora.Adaptadores.Firestore.AdProductosFirestore;
+import com.example.calculadora.GestorImagenes;
 import com.example.calculadora.Modelos.Productos;
 import com.example.calculadora.R;
 import com.example.calculadora.detectarInternet;
+import com.example.calculadora.utilidades;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,15 +34,20 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Principal extends AppCompatActivity {
+    StorageReference sref;
+
     FirebaseAuth auth;
+    GestorImagenes gestorImagenes;
     FirebaseUser usuario;
     FirebaseFirestore fStore;
     DocumentReference doc;
@@ -50,8 +57,8 @@ public class Principal extends AppCompatActivity {
     EditText txtBuscar;
     Query query;
     RecyclerView rvDescuentos;
-    AdaptadorProductos adProductos;
-    AdaptadorAnuncios adAnuncios;
+    AdProductosFirestore adProductosFirestore;
+    AdAnunciosFirestore adAnuncios;
     String rol = "invitado", campo = "nombre", filtro = "";
     int anuncioActual;
     private ViewPager vpAnuncios;
@@ -59,30 +66,33 @@ public class Principal extends AppCompatActivity {
 
     Productos productos;
     final ArrayList<Productos> alProductos = new ArrayList<Productos>();
+    utilidades utils;
 
-    private final Runnable actualizarAnuncios =()->{
-        anuncioActual=vpAnuncios.getCurrentItem();
-        if(anuncioActual == vpAnuncios.getAdapter().getCount()-1){
-            anuncioActual=0;
+    private final Runnable actualizarAnuncios = () -> {
+        anuncioActual = vpAnuncios.getCurrentItem();
+         if (anuncioActual == vpAnuncios.getAdapter().getCount() - 1) {
+            anuncioActual = 0;
         }
-        vpAnuncios.setCurrentItem(anuncioActual+1,true);
+        vpAnuncios.setCurrentItem(anuncioActual + 1, true);
+
     };
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        adProductos.startListening();
+        adProductosFirestore.startListening();
         mostrarProductos(campo, filtro.toLowerCase().trim());
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adProductos.stopListening();
+            adProductosFirestore.stopListening();
     }
+
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacks(actualizarAnuncios);
     }
@@ -91,17 +101,21 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
+        gestorImagenes = new GestorImagenes();
+        di = new detectarInternet(getApplicationContext());
         campo = "nombre";
         filtro = "";
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build();
         fStore = FirebaseFirestore.getInstance();
+        fStore.setFirestoreSettings(settings);
         auth = FirebaseAuth.getInstance();
         txtBuscar = findViewById(R.id.txtBuscar);
         btnCarrito = findViewById(R.id.btnCarrito);
         btnChat = findViewById(R.id.btnChat);
         btnAgregarProducto = findViewById(R.id.btnAgregarProducto);
         btnPerfil = findViewById(R.id.btnPerfil);
-        btnMapa=findViewById(R.id.btnUbicacion);
-        btnMenu=findViewById(R.id.btnMenu);
+        btnMapa = findViewById(R.id.btnUbicacion);
+        btnMenu = findViewById(R.id.btnMenu);
         btnAgregarProducto.setVisibility(View.GONE);
         btnBuscar = findViewById(R.id.btnBuscar);
         //grdDescuentos=findViewById(R.id.grdDescuentos);
@@ -109,11 +123,13 @@ public class Principal extends AppCompatActivity {
         rvDescuentos.setLayoutManager(new LinearLayoutManager(this));
         vpAnuncios = findViewById(R.id.vpAnuncios);
 
-handler= new Handler();
+        fStore.collection("categorias").get();
+        fStore.collection("subCategorias").get();
+        handler = new Handler();
         mostrarAnuncios();
 
 
-        handler.postDelayed(actualizarAnuncios,5000);
+        handler.postDelayed(actualizarAnuncios, 5000);
         mostrarProductos(campo, filtro.toLowerCase().trim());
         try {
             usuario = auth.getCurrentUser();
@@ -132,7 +148,7 @@ handler= new Handler();
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    mostrarMsg(e.getMessage());
+                    mostrarMsg("Nooo "+e.getMessage());
                 }
             });
         } else {
@@ -148,13 +164,13 @@ handler= new Handler();
                 mostrarProductos(campo, filtro.toLowerCase().trim());
             }
         });
-btnMapa.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent i = new Intent(getApplicationContext(), Mapa.class);
-        startActivity(i);
-    }
-});
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Mapa.class);
+                startActivity(i);
+            }
+        });
         btnAgregarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,11 +187,10 @@ btnMapa.setOnClickListener(new View.OnClickListener() {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (rol.equals("admin")){
+                if (rol.equals("admin")) {
                     Intent chat = new Intent(getApplicationContext(), ListaChats.class);
                     startActivity(chat);
-                }
-                else {
+                } else {
                     Intent chat = new Intent(getApplicationContext(), Chat.class);
                     startActivity(chat);
                 }
@@ -197,8 +212,8 @@ btnMapa.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onPageSelected(int position) {
-handler.removeCallbacks(actualizarAnuncios);
-handler.postDelayed(actualizarAnuncios,10000);
+                handler.removeCallbacks(actualizarAnuncios);
+                handler.postDelayed(actualizarAnuncios, 10000);
             }
 
             @Override
@@ -215,18 +230,18 @@ handler.postDelayed(actualizarAnuncios,10000);
                 List<String> urlsAnuncios = new ArrayList<>();
                 for (QueryDocumentSnapshot doc : task.getResult()
                 ) {
-urlsAnuncios.add(doc.getString("url"));
+                    urlsAnuncios.add(doc.getString("url"));
                 }
-                adAnuncios= new AdaptadorAnuncios(getApplicationContext(),urlsAnuncios.toArray(new String[urlsAnuncios.size()]));
+                adAnuncios = new AdAnunciosFirestore(getApplicationContext(), urlsAnuncios.toArray(new String[urlsAnuncios.size()]));
                 vpAnuncios.setAdapter(adAnuncios);
             }
         });
-btnMenu.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        mostrarCategorias();
-    }
-});
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCategorias();
+            }
+        });
 
     }
 
@@ -235,17 +250,17 @@ btnMenu.setOnClickListener(new View.OnClickListener() {
         col.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    PopupMenu menu = new PopupMenu(Principal.this,btnMenu);
-                    for (QueryDocumentSnapshot doc : task.getResult()){
+                if (task.isSuccessful()) {
+                    PopupMenu menu = new PopupMenu(Principal.this, btnMenu);
+                    for (QueryDocumentSnapshot doc : task.getResult()) {
                         String categoria = doc.getString("nombre");
-                        if(categoria != null){
+                        if (categoria != null) {
                             menu.getMenu().add(categoria);
                         }
                     }
-                    menu.setOnMenuItemClickListener(categoria ->{
-                       mostrarSubCategorias( categoria.getTitle().toString());
-                       return true;
+                    menu.setOnMenuItemClickListener(categoria -> {
+                        mostrarSubCategorias(categoria.getTitle().toString());
+                        return true;
                     });
                     menu.show();
                 }
@@ -254,26 +269,26 @@ btnMenu.setOnClickListener(new View.OnClickListener() {
     }
 
     private void mostrarSubCategorias(String categoria) {
-        fStore.collection("subCategorias").whereEqualTo("categoriaPrincipal",categoria)
+        fStore.collection("subCategorias").whereEqualTo("categoriaPrincipal", categoria)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    PopupMenu menu = new PopupMenu(Principal.this,btnMenu);
-                    for (QueryDocumentSnapshot doc : task.getResult()){
-                        String categoria = doc.getString("nombre");
-                        if(categoria != null){
-                            menu.getMenu().add(categoria);
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            PopupMenu menu = new PopupMenu(Principal.this, btnMenu);
+                            for (QueryDocumentSnapshot doc : task.getResult()) {
+                                String categoria = doc.getString("nombre");
+                                if (categoria != null) {
+                                    menu.getMenu().add(categoria);
+                                }
+                            }
+                            menu.setOnMenuItemClickListener(categoria -> {
+                                abrirListaProductos(categoria.getTitle().toString());
+                                return true;
+                            });
+                            menu.show();
                         }
                     }
-                    menu.setOnMenuItemClickListener(categoria ->{
-                        abrirListaProductos(categoria.getTitle().toString());
-                        return true;
-                    });
-                    menu.show();
-                }
-            }
-        });
+                });
     }
 
     private void abrirListaProductos(String categoria) {
@@ -289,22 +304,20 @@ btnMenu.setOnClickListener(new View.OnClickListener() {
     }
 
     private void mostrarProductos(String campo, String filtro) {
-        query = fStore.collection("productos").whereGreaterThan("descuento",0);
+        query = fStore.collection("productos").whereGreaterThan("descuento", 0);
         FirestoreRecyclerOptions<Productos> fOptions = new FirestoreRecyclerOptions.Builder<Productos>()
                 .setQuery(query, Productos.class).build();
-        adProductos = new AdaptadorProductos(fOptions, this, campo, filtro);
-        adProductos.startListening();
-        rvDescuentos.setAdapter(adProductos);
+        adProductosFirestore = new AdProductosFirestore(fOptions, this, campo, filtro);
+        adProductosFirestore.startListening();
+        rvDescuentos.setAdapter(adProductosFirestore);
     }
-
-
 
     private void mostrarMsg(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     private int elementosListados(int count) {
-        for (int i = 0; i < adProductos.getItemCount(); i++) {
+        for (int i = 0; i < adProductosFirestore.getItemCount(); i++) {
             if (rvDescuentos.getLayoutManager().findViewByPosition(i).getVisibility() == View.VISIBLE) {
                 count++;
             }
@@ -316,14 +329,14 @@ btnMenu.setOnClickListener(new View.OnClickListener() {
         try {
             if (!(rol.equals("admin"))) {
                 btnAgregarProducto.setVisibility(View.GONE);
-if(!rol.equals("cliente")){
-    btnChat.setVisibility(View.GONE);
-    btnCarrito.setVisibility(View.GONE);
-}else{
+                if (!rol.equals("cliente")) {
+                    btnChat.setVisibility(View.GONE);
+                    btnCarrito.setVisibility(View.GONE);
+                } else {
 
-    btnChat.setVisibility(View.VISIBLE);
-    btnCarrito.setVisibility(View.VISIBLE);
-}
+                    btnChat.setVisibility(View.VISIBLE);
+                    btnCarrito.setVisibility(View.VISIBLE);
+                }
             } else {
                 btnAgregarProducto.setVisibility(View.VISIBLE);
             }

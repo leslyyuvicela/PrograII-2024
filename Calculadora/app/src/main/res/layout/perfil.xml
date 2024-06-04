@@ -119,6 +119,7 @@
             android:paddingRight="10dp"
             android:background="@drawable/fondo_redondo"
             android:textSize="18dp"
+            android:enabled="false"
             />
         <ImageView
             android:id="@+id/ic_telefono"

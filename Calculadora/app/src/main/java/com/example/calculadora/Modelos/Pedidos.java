@@ -1,8 +1,13 @@
 package com.example.calculadora.Modelos;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.type.DateTime;
 
-public class Pedido {
+@Entity
+public class Pedidos {
+    @PrimaryKey
     String id;
     String cliente;
     String direccionEntrega;
@@ -10,9 +15,10 @@ public class Pedido {
     DateTime fechaPedido;
     DateTime fechaEntregado;
     String mensajeCancelacion;
+    Boolean actualizado = true;
 
-    public Pedido(Pedido pedido){}
-    public Pedido(String id, String cliente, String direccionEntrega, String estado, DateTime fechaPedido, DateTime fechaEntregado, String mensajeCancelacion) {
+    public Pedidos(Pedidos pedido){}
+    public Pedidos(String id, String cliente, String direccionEntrega, String estado, DateTime fechaPedido, DateTime fechaEntregado, String mensajeCancelacion, Boolean actualizado) {
         this.id=id;
         this.cliente = cliente;
         this.direccionEntrega = direccionEntrega;
@@ -20,6 +26,7 @@ public class Pedido {
         this.fechaPedido = fechaPedido;
         this.fechaEntregado = fechaEntregado;
         this.mensajeCancelacion = mensajeCancelacion;
+        this.actualizado=actualizado;
     }
 
     public String getId() {
@@ -75,5 +82,13 @@ public class Pedido {
 
     public void setMensajeCancelacion(String mensajeCancelacion) {
         this.mensajeCancelacion = mensajeCancelacion;
+    }
+
+    public Boolean getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(Boolean actualizado) {
+        this.actualizado = actualizado;
     }
 }

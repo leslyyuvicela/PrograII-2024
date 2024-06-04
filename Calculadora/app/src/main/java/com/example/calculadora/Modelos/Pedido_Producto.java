@@ -6,14 +6,16 @@ public class Pedido_Producto {
     String idPedido;
     String cantidad;
     String precioUnidad;
+    Boolean actualizado = true;
 
     public Pedido_Producto(Pedido_Producto pedido_producto){}
-    public Pedido_Producto(String id, String idProducto, String idPedido, String cantidad, String precioUnidad) {
+    public Pedido_Producto(String id, String idProducto, String idPedido, String cantidad, String precioUnidad, Boolean actualizado) {
         this.id = id;
         this.idProducto = idProducto;
         this.idPedido = idPedido;
         this.cantidad = cantidad;
         this.precioUnidad = precioUnidad;
+        this.actualizado=actualizado;
     }
 
     public String getId() {
@@ -54,5 +56,13 @@ public class Pedido_Producto {
 
     public void setPrecioUnidad(String precioUnidad) {
         this.precioUnidad = precioUnidad;
+    }
+
+    public Boolean getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(Boolean actualizado) {
+        this.actualizado = actualizado;
     }
 }

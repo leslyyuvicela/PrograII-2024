@@ -20,18 +20,17 @@ public class ListaChats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_chats);
 
-        lyChat=findViewById(R.id.lyChat);
         btnPedidos=findViewById(R.id.btnChat);
         btnPrincipal=findViewById(R.id.btnPrincipal);
 
-        lyChat.setOnClickListener(new View.OnClickListener() {
+       /* lyChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Chat.class);
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
 
         btnPedidos.setOnClickListener(new View.OnClickListener() {
             @Override

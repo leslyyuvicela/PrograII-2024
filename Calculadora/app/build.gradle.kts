@@ -17,6 +17,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments += mapOf("room.incremental" to "true")
+            }
+        }
     }
 
     buildTypes {
@@ -49,7 +54,11 @@ dependencies {
     // FirebaseUI for Cloud Storage
     implementation ("com.firebaseui:firebase-ui-storage:8.0.2")
     //Picasso para usar imagenes
-    implementation("com.squareup.picasso:picasso:2.5.2")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    //Room para usar SQLite
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")

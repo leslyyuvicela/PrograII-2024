@@ -1,4 +1,4 @@
-package com.example.calculadora.Adaptadores;
+package com.example.calculadora.Adaptadores.Firestore;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,10 +13,10 @@ import com.example.calculadora.R;
 
 import com.squareup.picasso.Picasso;
 
-public class AdaptadorAnuncios extends PagerAdapter {
+public class AdAnunciosFirestore extends PagerAdapter {
 private Context contexto;
 private String[] urls;
-    public AdaptadorAnuncios(Context contexto, String[] urls) {
+    public AdAnunciosFirestore(Context contexto, String[] urls) {
         this.contexto=contexto;
         this.urls= urls;
     }
@@ -37,7 +37,7 @@ private String[] urls;
         LayoutInflater inflater = LayoutInflater.from(contexto);
         View view = inflater.inflate(R.layout.imagen_anuncio, container,false);
         ImageView imageView = view.findViewById(R.id.imageView);
-        Picasso.with(contexto).load(urls[position]).into(imageView);
+        Picasso.get().load(urls[position]).into(imageView);
         container.addView(view);
 
         return view;

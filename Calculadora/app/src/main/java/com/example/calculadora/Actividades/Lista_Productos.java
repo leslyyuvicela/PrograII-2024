@@ -14,7 +14,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.calculadora.Adaptadores.AdaptadorProductos;
+import com.example.calculadora.Adaptadores.Firestore.AdProductosFirestore;
 import com.example.calculadora.Modelos.Productos;
 import com.example.calculadora.R;
 import com.example.calculadora.detectarInternet;
@@ -30,6 +30,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -47,7 +48,7 @@ public class Lista_Productos extends AppCompatActivity { FirebaseAuth auth;
     TextView tvCategoria;
     Query query;
     RecyclerView rvProductos;
-    AdaptadorProductos adProductos;
+    AdProductosFirestore adProductos;
     String rol = "", campo = "nombre", filtro = "", categoria;
 
     Productos productos;
@@ -75,7 +76,9 @@ public class Lista_Productos extends AppCompatActivity { FirebaseAuth auth;
         campo = "nombre";
         filtro = "";
         tvCategoria=findViewById(R.id.tvCategoria);
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setPersistenceEnabled(true).build();
         fStore = FirebaseFirestore.getInstance();
+        fStore.setFirestoreSettings(settings);
         auth = FirebaseAuth.getInstance();
         txtBuscar = findViewById(R.id.txtBuscar);
         btnCarrito = findViewById(R.id.btnCarrito);
@@ -233,7 +236,7 @@ public class Lista_Productos extends AppCompatActivity { FirebaseAuth auth;
         query = fStore.collection("productos").whereEqualTo("categoria",categoria);
         FirestoreRecyclerOptions<Productos> fOptions = new FirestoreRecyclerOptions.Builder<Productos>()
                 .setQuery(query, Productos.class).build();
-        adProductos = new AdaptadorProductos(fOptions, this, campo, filtro);
+        adProductos = new AdProductosFirestore(fOptions, this, campo, filtro);
         adProductos.startListening();
         rvProductos.setAdapter(adProductos);
     }

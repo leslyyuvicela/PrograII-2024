@@ -1,4 +1,4 @@
-package com.example.calculadora.Adaptadores;
+package com.example.calculadora.Adaptadores.Firestore;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,15 +20,13 @@ import com.example.calculadora.Modelos.Productos;
 import com.example.calculadora.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
-public class AdaptadorProductos extends FirestoreRecyclerAdapter<Productos,AdaptadorProductos.ViewHolder> {
+public class AdProductosFirestore extends FirestoreRecyclerAdapter<Productos, AdProductosFirestore.ViewHolder> {
 DecimalFormat df =new DecimalFormat("#.##");
 Activity actividad;
 String campo, filtro;
@@ -44,7 +42,7 @@ private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
      *
      * @param options
      */
-    public AdaptadorProductos(@NonNull FirestoreRecyclerOptions<Productos> options, Activity actividad, String campo, String filtro) {
+    public AdProductosFirestore(@NonNull FirestoreRecyclerOptions<Productos> options, Activity actividad, String campo, String filtro) {
         super(options);
         this.actividad = actividad;
         this.campo = campo;
@@ -93,15 +91,11 @@ private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
             }
         }
         try {
-                Picasso.with(holder.imgProducto.getContext()).load(urlFoto).resize(150,150).into(holder.imgProducto);
+                Picasso.get().load(urlFoto).resize(150,150).into(holder.imgProducto);
 
         }catch (Exception e){
             Toast.makeText(actividad,e.getMessage(),Toast.LENGTH_SHORT);
         }
-
-    //    Bitmap bitmap = BitmapFactory.decodeFile(p.getUrlFoto());
-     //   holder.imgProducto.setImageBitmap(bitmap);
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -140,18 +134,7 @@ holder.itemView.setVisibility(View.GONE);
             imgProducto = itemView.findViewById(R.id.imgFoto);
         }
     }
-    private void borrarProducto(String id){
-        fStore.collection("productos").document(id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
 
-            }
-        });
-    }
     private void editarProducto(String id){
         Intent editarProducto = new Intent(actividad, Agregar_Producto.class);
         editarProducto.putExtra("idProducto",id);
