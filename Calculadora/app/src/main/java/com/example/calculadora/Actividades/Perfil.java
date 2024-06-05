@@ -124,7 +124,7 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onSuccess(Void unused) {
-                mostrarMsg("Producto guardado con exito!");
+                mostrarMsg("Los datos han sido actualizados");
                 regresarListaProductos();
             }
         }).addOnFailureListener(new OnFailureListener() {

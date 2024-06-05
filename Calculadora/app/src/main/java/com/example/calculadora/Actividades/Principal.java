@@ -69,11 +69,15 @@ public class Principal extends AppCompatActivity {
     utilidades utils;
 
     private final Runnable actualizarAnuncios = () -> {
-        anuncioActual = vpAnuncios.getCurrentItem();
-         if (anuncioActual == vpAnuncios.getAdapter().getCount() - 1) {
-            anuncioActual = 0;
+        try {
+            anuncioActual = vpAnuncios.getCurrentItem();
+            if (anuncioActual == vpAnuncios.getAdapter().getCount() - 1) {
+                anuncioActual = 0;
+            }
+            vpAnuncios.setCurrentItem(anuncioActual + 1, true);
+        }catch (Exception e){
+
         }
-        vpAnuncios.setCurrentItem(anuncioActual + 1, true);
 
     };
 
@@ -177,6 +181,7 @@ public class Principal extends AppCompatActivity {
                 agregarProducto();
             }
         });
+        
         btnCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
