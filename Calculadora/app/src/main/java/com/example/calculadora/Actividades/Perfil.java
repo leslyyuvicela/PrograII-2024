@@ -95,6 +95,7 @@ public class Perfil extends AppCompatActivity {
             public void onClick(View v) {
                 cerrarSesión();
             }
+
         });
     }
     private void obtenerUsuario(){
